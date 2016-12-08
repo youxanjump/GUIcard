@@ -1,4 +1,3 @@
-# GUIcard
 package com.example.user.guicard_sqlite_database;
 
 import android.content.ContentValues;
@@ -8,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.TextView;
+
 
 /**
  * Created by USER on 2016/12/6.
@@ -26,9 +26,9 @@ public class MyDataBase extends SQLiteOpenHelper {
 
     public final String DB_CREATE_TABLE
             = "CREATE TABLE  " + DATABASE_TABLE + " ( " +
-             ID + " INTEGER  PRIMARY KEY AUTOINCREMENT," +
+             ID + " INTEGER PRIMARY KEY," +
              ACCOUNT + " TEXT UNIQUE," +
-             PASSWORD + "  TEXT NOT  NULL," +
+             PASSWORD + "  TEXT NOT NULL," +
              NAME +" TEXT NOT NULL," +
              INTERES + "   INTEGER NOT NULL," +
              GENDER + "   INTEGER NOT NULL);";
@@ -45,15 +45,15 @@ public class MyDataBase extends SQLiteOpenHelper {
             onCreate(db);
     }
 
-    public void add(SQLiteDatabase db,int id,String account,String password, String name, int interes, int gender){
+    public void add(SQLiteDatabase db,UserInfor user){
             ContentValues cv = new ContentValues();
-            cv.put(ID,id);
-            cv.put(ACCOUNT,account);
-            cv.put(PASSWORD,password);
-            cv.put(NAME,name);
-            cv.put(INTERES,interes);
-            cv.put(GENDER,gender);
-            long adid = db.insertWithOnConflict(DATABASE_TABLE,null,cv,SQLiteDatabase.CONFLICT_REPLACE);
+            cv.put(NAME,user.name);
+            cv.put(ACCOUNT,user.account);
+            cv.put(PASSWORD,user.password);
+            cv.put(ID,user.id);
+            cv.put(INTERES,user.interes);
+            cv.put(GENDER,user.gender);
+            long adid = db.insert(DATABASE_TABLE,null,cv);
             Log.d("ADD", adid+"");
     }
 
@@ -63,11 +63,12 @@ public class MyDataBase extends SQLiteOpenHelper {
         StringBuilder resultData = new StringBuilder("RESULT: \n");
 
         while(cursor.moveToNext()){
-            String account = cursor.getString(0);
-            String password = cursor.getString(1);
-            String name = cursor.getString(2);
-            int interes = cursor.getInt(3);
-            int gender = cursor.getInt(4);
+            //int id = cursor.getInt(0);
+            String account = cursor.getString(1);
+            String password = cursor.getString(2);
+            String name = cursor.getString(3);
+            int interes = cursor.getInt(4);
+            int gender = cursor.getInt(5);
 
             resultData.append(account).append(": ");
             resultData.append(password).append(", ");
@@ -83,7 +84,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     private Cursor getCursor(){
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {ACCOUNT,PASSWORD, NAME, INTERES, GENDER};
+        String[] columns = {ID,ACCOUNT,PASSWORD, NAME, INTERES, GENDER};
         Cursor cursor = db.query(DATABASE_TABLE, columns, null, null, null, null, null);
         return cursor;
 
