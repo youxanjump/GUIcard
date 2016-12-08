@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String DATABASE_NAME="UserInformation";
-    //public TextView result =(TextView)findViewById(R.id.result);
+//    private TextView result =(TextView)findViewById(R.id.result);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
         MyDataBase myDataBase = new MyDataBase(this,DATABASE_NAME,null,3);
         SQLiteDatabase db = myDataBase.getWritableDatabase();
 
-        myDataBase.add(db,666,"U10316033","Youxan","Youxan",32,1);
-        //myDataBase.show(result);
+        UserInfor user = new UserInfor(666,"U10316033","Youxan","Youxan",32,1);
+        myDataBase.add(db,user);
+ //       myDataBase.show(result);
     }
 }
