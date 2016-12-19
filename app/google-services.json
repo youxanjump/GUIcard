@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "453899345375",
+    "firebase_url": "https://guicard-de0f4.firebaseio.com",
+    "project_id": "guicard-de0f4",
+    "storage_bucket": "guicard-de0f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453899345375:android:159cd67fda7cb973",
+        "android_client_info": {
+          "package_name": "com.example.user.guicard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453899345375-hg2s9o2ca00mf9ntcnd17i15mngpc7ia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXhsgB_qfzv1u4r3peS2tzzV9mT1_u2Mk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453899345375-hg2s9o2ca00mf9ntcnd17i15mngpc7ia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
