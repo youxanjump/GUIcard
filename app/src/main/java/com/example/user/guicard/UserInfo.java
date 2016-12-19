@@ -22,4 +22,12 @@ public class UserInfo {
         this.interes=interes;
         this.gender=gender;
     }
+
+    public UserInfo(String account,String password,String name,int interes,int gender){
+        this.account=account;
+        this.password=password;
+        this.name=name;
+        this.interes=interes;
+        this.gender=gender;
+    }
 }

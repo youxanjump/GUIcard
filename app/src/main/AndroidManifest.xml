@@ -24,6 +24,7 @@
         <activity android:name=".SignUp" />
         <activity android:name=".UserInterface" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".take_picture" />
     </application>
 
 </manifest>

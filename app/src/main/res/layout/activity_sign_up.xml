@@ -10,22 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.user.guicard.SignUp">
 
-    <Button
-        android:text="signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Log"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Profile_SLECT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/slect_image"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,47 +42,6 @@
         android:layout_marginTop="31dp"
         android:layout_below="@+id/Password"
         android:layout_alignStart="@+id/Password" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gender"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/Name"
-        android:layout_alignStart="@+id/Name"
-        android:weightSum="1">
-
-
-        <RadioButton
-            android:text="Man"
-            android:layout_width="72dp"
-            android:layout_height="60dp"
-            android:id="@+id/man"
-            android:layout_alignTop="@+id/gender"
-            android:layout_toEndOf="@+id/take_picture"
-            android:layout_marginTop="10dp"
-            android:layout_weight="6.79" />
-
-        <RadioButton
-        android:text="Woman"
-        android:layout_width="101dp"
-        android:layout_height="75dp"
-            android:id="@+id/woman"
-            android:layout_alignBottom="@+id/man"
-            android:layout_toEndOf="@+id/man"
-            android:layout_marginStart="19dp"
-            android:layout_weight="6.79" />
-
-    </RadioGroup>
-
-    <Button
-        android:text="TAKE_PICTURE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/take_picture"
-        android:layout_alignTop="@+id/Log"
-        android:layout_alignEnd="@+id/gender"
-        android:layout_marginTop="8dp" />
 
     <CheckBox
         android:text="木吉他"
@@ -164,5 +107,44 @@
         android:layout_below="@+id/a7"
         android:layout_toEndOf="@+id/a2"
         android:id="@+id/a8" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gender"
+        android:layout_marginTop="18dp"
+        android:weightSum="1"
+        android:layout_below="@+id/Name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp">
+
+
+        <RadioButton
+            android:text="Man"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/man"
+            android:layout_alignTop="@+id/gender"
+            android:layout_toEndOf="@+id/take_image"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+        android:text="Woman"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+            android:id="@+id/woman"
+            android:layout_alignBottom="@+id/man"
+            android:layout_toEndOf="@+id/man"
+            android:layout_marginStart="19dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:text="Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/next" />
 
 </RelativeLayout>
