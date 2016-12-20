@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/pic"
+        android:id="@+id/pic"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/favoriteG"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/pic"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/nextB1"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/next1" />
+
+    <Button
+        android:id="@+id/back"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/next1"
+        android:text="Next"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/back1"
+        android:text="Back"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/back" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:stretchColumns="*"
+        android:layout_alignTop="@+id/favoriteG"
+        android:layout_alignParentStart="true">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/B1"
+                android:text="木吉他"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/B2"
+                android:text="演奏"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"/>
+
+            <Button
+                android:id="@+id/B3"
+                android:text="貝斯"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/B4"
+                android:text="電吉他"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                />
+
+            <Button
+                android:id="@+id/B5"
+                android:text="鼓組"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                />
+
+            <Button
+                android:id="@+id/B6"
+                android:text="演唱"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+               />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/B7"
+                android:text="鍵盤樂器"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                />
+
+            <Button
+                android:id="@+id/B8"
+                android:text="創作"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+               />
+
+            <Button
+                android:id="@+id/B9"
+                android:text="其他"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@drawable/btn_pro"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/instrument"
+        android:text="Favorite  instruments"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/favoriteG"
+        android:layout_toEndOf="@+id/favoriteG" />
+</RelativeLayout>

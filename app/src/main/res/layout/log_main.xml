@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/next"
+        android:text="Next"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/nextB"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/next" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/pic"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/AccountG"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_below="@+id/pic"
+        android:layout_alignStart="@+id/NameG"
+        android:layout_marginTop="33dp" />
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Line"
+        android:id="@+id/Name1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/TextInputHint"
+        android:layout_alignBottom="@+id/AccountG"
+        android:layout_alignStart="@+id/Account1">
+
+        <EditText
+            android:id="@+id/Name"
+            android:hint="Your Name"
+            android:textSize="30sp"
+            android:ems="20"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="300dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Line"
+        android:id="@+id/Account1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        app:hintTextAppearance="@style/TextInputHint"
+        app:errorEnabled="true"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/Name1"
+        android:layout_alignEnd="@+id/nextB">
+
+        <EditText
+            android:id="@+id/Account"
+            android:hint="Account"
+            android:textSize="30sp"
+            android:ems="50"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="300dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/NameG"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_above="@+id/Password1"
+        android:layout_toStartOf="@+id/Account1" />
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Line"
+        android:id="@+id/Password1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:hintTextAppearance="@style/TextInputHint"
+        android:layout_above="@+id/nextB"
+        android:layout_toEndOf="@+id/NameG"
+        android:layout_marginBottom="11dp">
+
+        <EditText
+            android:id="@+id/Password"
+            android:hint="Password"
+            android:textSize="30sp"
+            android:ems="10"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="300dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/PasswordG"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_alignBottom="@+id/Password1"
+        android:layout_toStartOf="@+id/Account1" />
+
+    <Button
+        android:id="@+id/back"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/back1"
+        android:text="Back"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/back" />
+
+
+
+</RelativeLayout>

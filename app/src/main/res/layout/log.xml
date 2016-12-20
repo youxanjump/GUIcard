@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/pic"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/In"
+        android:text="Sign In"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/pic"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/Up"
+        android:text="Sign UP"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/In"
+        android:layout_alignStart="@+id/In" />
+
+    <Button
+        android:id="@+id/Guest"
+        android:text="Guest"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/Up"
+        android:layout_alignStart="@+id/Up"
+        android:layout_alignEnd="@+id/Up" />
+
+    <ImageView
+        android:id="@+id/imIn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_above="@+id/Up"
+        android:layout_alignStart="@+id/imUp" />
+
+    <ImageView
+        android:id="@+id/imUp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_alignBottom="@+id/Up"
+        android:layout_alignStart="@+id/imguest" />
+
+    <ImageView
+        android:id="@+id/imguest"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_alignBottom="@+id/Guest"
+        android:layout_toStartOf="@+id/Guest" />
+
+</RelativeLayout>
