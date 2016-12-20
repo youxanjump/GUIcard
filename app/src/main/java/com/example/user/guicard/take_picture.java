@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,10 +18,13 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.client.utilities.Base64;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
 
 
 /**
@@ -82,34 +86,31 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
 
         if (v == log) {
 
-            firebase.addValueEventListener(new ValueEventListener() {
+            if (imageReg == null) {
+                Toast.makeText(take_picture.this, "Please choose your PROFILE PICTURE", Toast.LENGTH_SHORT).show();return;
+            }
 
+            imgProgress.setMessage("Sign Up ...");
+            imgProgress.show();
+
+
+            StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
+            imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    if (imageReg == null) {
-                        Toast.makeText(take_picture.this, "Please choose your PROFILE PICTURE", Toast.LENGTH_SHORT).show();return;
-                    }
-
-                    imgProgress.setMessage("Sign Uping...");
-                    imgProgress.show();
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    user.profileUri = taskSnapshot.getDownloadUrl();
+                    imgProgress.dismiss();
+                }
+            });
 
 
-                    final StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
-                    imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            user.profileUri = taskSnapshot.getDownloadUrl();
-                            imgProgress.dismiss();
-                        }
-                    });
 
 
                     firebase.child(user.account).child("PASSWORD").setValue(user.password);
                     firebase.child(user.account).child("NAME").setValue(user.name);
-                    firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
                     firebase.child(user.account).child("INTERES").setValue(Integer.toString(user.interes));
                     firebase.child(user.account).child("GENDER").setValue(Integer.toString(user.gender));
+                    firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
 
                     Toast.makeText(take_picture.this, "Sign Success!", Toast.LENGTH_SHORT).show();
 
@@ -117,13 +118,6 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
                     intent.putExtra("MyAccount", user.account);
                     startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
         }
         if (v == slectImage) {
             Intent intent = new Intent(Intent.ACTION_PICK);
@@ -135,7 +129,7 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, CAMERA_REQUEST_CODE);
         } catch (ActivityNotFoundException anfe) {
-            Toast.makeText(this, "This device doesn't support the crop action!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "This device doesn't support the camera action!",Toast.LENGTH_SHORT).show();
         }
         }
 
@@ -156,6 +150,7 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
                 // get the cropped bitmap
                 Bitmap thePic = extras.getParcelable("data");
                 imagePreview.setImageBitmap(thePic);
+
             }
         }
     }
@@ -178,9 +173,20 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
             // indicate output X and Y
             cropIntent.putExtra("outputX", 256);
             cropIntent.putExtra("outputY", 256);
+            cropIntent.putExtra("outputFormat","JPEG");
             // retrieve data on return
             cropIntent.putExtra("return-data", true);
             // start the activity - we handle returning in onActivityResult
+            String localTempImgDir="Hello";
+
+            String localTempImgFileName = System.currentTimeMillis()+".jpg";
+            cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageReg);
+
+            File f=new File(Environment.getExternalStorageDirectory() +"/"+localTempImgDir+"/"+localTempImgFileName);
+            imageReg = Uri.fromFile(f);
+
+
+
             startActivityForResult(cropIntent, CROP_PIC);
         }
         // respond to users whose devices do not support the crop action
