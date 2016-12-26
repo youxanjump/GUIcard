@@ -27,7 +27,7 @@
         android:text="GUI"
         android:textColor="#440d18"
         android:textStyle="bold"
-        android:textSize="75sp"
+        android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/MP"
@@ -39,11 +39,11 @@
         android:text="Card"
         android:textColor="#440d18"
         android:textStyle="bold"
-        android:textSize="75sp"
+        android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="46dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/MP"
-        android:layout_marginBottom="11dp" />
+        android:layout_alignEnd="@+id/MP" />
 </RelativeLayout>
