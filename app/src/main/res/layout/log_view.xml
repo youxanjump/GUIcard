@@ -77,9 +77,9 @@
                 android:text="木吉他"
                 android:textStyle="bold"
                 android:textSize="30sp"
-                android:background="@drawable/btn_pro"
                 android:layout_width="50dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/btn_pro"/>
 
             <Button
                 android:id="@+id/B2"
