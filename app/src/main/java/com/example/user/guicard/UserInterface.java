@@ -1,20 +1,18 @@
 package com.example.user.guicard;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.user.guicard.R;
+import com.example.user.guicard.UserInfo;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.Map;
 
@@ -48,20 +46,11 @@ public class UserInterface extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, String> map = dataSnapshot.child(myAccount).getValue(Map.class);
-                user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTERES")), Integer.parseInt(map.get("GENDER")));
+                user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTERES")));
 
                 //show your profile
                 Picasso.with(UserInterface.this).load(user.profileUri).into(myProfile);
                 myName.setText(user.name);
-
-                switch (user.gender) {
-                    case 0:
-                        myGender.setText("MAN");
-                        break;
-                    case 1:
-                        myGender.setText("WOMAN");
-                        break;
-                }
 
                 while (user.interes > 0) {
                     int interesCount = 0;
@@ -82,3 +71,4 @@ public class UserInterface extends AppCompatActivity {
 
     }
 }
+

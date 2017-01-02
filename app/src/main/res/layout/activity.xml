@@ -10,39 +10,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="hsiao.MainActivity">
+    tools:context="nancy.MainActivity">
 
 
     <Button
         android:id="@+id/MP"
         android:gravity="center_horizontal"
         android:background="@drawable/face"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="46dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/Card"
         android:text="Card"
         android:textColor="#440d18"
         android:textStyle="bold"
-        android:textSize="75sp"
+        android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="46dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignEnd="@+id/MP" />
 
     <TextView
         android:id="@+id/GUI"
         android:text="GUI"
         android:textColor="#440d18"
         android:textStyle="bold"
-        android:textSize="75sp"
+        android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/MP"
-        android:layout_toStartOf="@+id/Card" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

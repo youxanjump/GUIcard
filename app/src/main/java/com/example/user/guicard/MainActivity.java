@@ -1,40 +1,42 @@
 package com.example.user.guicard;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.graphics.Typeface;
 import android.widget.TextView;
+import android.widget.Button;
+import android.content.Intent;
 
-import com.firebase.client.Firebase;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.auth.*;
-import com.google.firebase.database.FirebaseDatabase;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private Button login;
-    private Button signup;
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity);
 
-        login = (Button)findViewById(R.id.login);
-        signup = (Button)findViewById(R.id.signup);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
+        TextView GUI = (TextView) findViewById(R.id.GUI);
+        TextView Card = (TextView) findViewById(R.id.Card);
+        Button MP = (Button) findViewById(R.id.MP);
 
-        login.setOnClickListener(this);
-        signup.setOnClickListener(this);
+        //修改字體
+        GUI.setTypeface(font);
+        Card.setTypeface(font);
 
-    }
+        Thread loading = new Thread(){
 
-    @Override
-    public void onClick(View v){
-        if(v==login)startActivity(new Intent(this,Login.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-        else startActivity(new Intent(this,SignUp.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
+                    Intent intent = new Intent(getApplicationContext(),LogMain.class);
+                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        };
+        loading.start();
     }
 }

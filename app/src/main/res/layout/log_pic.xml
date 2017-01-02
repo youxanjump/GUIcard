@@ -10,8 +10,91 @@
         android:layout_height="150dp"
         app:srcCompat="@drawable/pic"
         android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:srcCompat="@drawable/common_full_open_on_phone"
+        android:layout_below="@+id/pic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp" />
+
+    <ImageView
+        android:id="@+id/FTA"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_alignBottom="@+id/Album"
+        android:layout_toStartOf="@+id/Album" />
+
+    <ImageView
+        android:id="@+id/TP"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/guitar"
+        android:layout_alignBottom="@+id/Picture"
+        android:layout_toStartOf="@+id/Album" />
+
+    <Button
+        android:id="@+id/Picture"
+        android:text="Take Picture"
+        android:textSize="19sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/image"
+        android:layout_alignEnd="@+id/image" />
+
+    <Button
+        android:id="@+id/Album"
+        android:text="From Album"
+        android:textSize="19sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/Picture"
+        android:layout_alignStart="@+id/Picture"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/nextB1"
+        android:background="@drawable/icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/next1" />
+
+    <TextView
+        android:id="@+id/Next"
+        android:text="OK"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/back"
+        android:background="@drawable/icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/Next" />
+
+    <TextView
+        android:id="@+id/Back"
+        android:text="Back"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/nextB1" />
+
 
 </RelativeLayout>

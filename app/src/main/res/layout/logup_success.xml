@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/ground">
+
+
+    <TextView
+        android:id="@+id/WT"
+        android:text="Welcome to"
+        android:textSize="60sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_alignTop="@+id/PG"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+        android:id="@+id/PG"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:srcCompat="@drawable/pullgun"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/PG1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/pullgun1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/Fire1"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:srcCompat="@drawable/firework"
+        android:layout_marginEnd="40dp"
+        android:layout_below="@+id/WT"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/Card"
+        android:text="Card"
+        android:textSize="100sp"
+        android:textColor="#440d18"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Fire"
+        android:layout_alignEnd="@+id/Fire1"
+        android:layout_marginBottom="31dp" />
+
+    <TextView
+        android:id="@+id/ES"
+        android:text="Enjoy and Share"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/Card"
+        android:layout_alignEnd="@+id/WT" />
+
+    <TextView
+        android:id="@+id/YM"
+        android:text="Your Music Life"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ES"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/GUI"
+        android:text="GUI"
+        android:textSize="100sp"
+        android:textColor="#440d18"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_alignBottom="@+id/Fire1"
+        android:layout_alignStart="@+id/ES" />
+
+    <ImageView
+        android:id="@+id/Fire"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:srcCompat="@drawable/firework"
+        android:layout_marginBottom="17dp"
+        android:layout_above="@+id/PG1"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

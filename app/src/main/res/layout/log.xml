@@ -14,65 +14,88 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/In"
-        android:text="Sign In"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:background="@drawable/btn_pro"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="47dp"
-        android:layout_below="@+id/pic"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:id="@+id/Up"
-        android:text="Sign UP"
+        android:text="Sign Up"
         android:textStyle="bold"
         android:textSize="30sp"
         android:background="@drawable/btn_pro"
-        android:layout_width="135dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/In"
-        android:layout_alignStart="@+id/In" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/imIn" />
 
     <Button
-        android:id="@+id/Guest"
-        android:text="Guest"
+        android:id="@+id/In"
+        android:text="Log In"
         android:textStyle="bold"
         android:textSize="30sp"
         android:background="@drawable/btn_pro"
-        android:layout_width="135dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="69dp"
         android:layout_below="@+id/Up"
-        android:layout_alignStart="@+id/Up"
-        android:layout_alignEnd="@+id/Up" />
-
-    <ImageView
-        android:id="@+id/imIn"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/guitar"
-        android:layout_above="@+id/Up"
-        android:layout_alignStart="@+id/imUp" />
+        android:layout_toEndOf="@+id/imIn" />
 
     <ImageView
         android:id="@+id/imUp"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/guitar"
-        android:layout_alignBottom="@+id/Up"
-        android:layout_alignStart="@+id/imguest" />
+        android:layout_above="@+id/SIGNUP"
+        android:layout_toStartOf="@+id/Up" />
 
     <ImageView
-        android:id="@+id/imguest"
+        android:id="@+id/imIn"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/guitar"
-        android:layout_alignBottom="@+id/Guest"
-        android:layout_toStartOf="@+id/Guest" />
+        android:layout_marginStart="33dp"
+        android:layout_alignBottom="@+id/In"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/SIGNUP1"
+        android:textSize="17sp"
+        android:text="You should press this to create  a new account."
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/imIn"
+        android:layout_below="@+id/SIGNUP" />
+
+    <TextView
+        android:id="@+id/SIGNUP"
+        android:textSize="17sp"
+        android:text="If you don't have the account."
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Up"
+        android:layout_alignStart="@+id/SIGNUP1" />
+
+    <TextView
+        android:id="@+id/SIGNIN"
+        android:textSize="17sp"
+        android:text="If you already have the account."
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/In"
+        android:layout_toEndOf="@+id/imIn" />
+
+    <TextView
+        android:id="@+id/SIGNIN1"
+        android:textSize="17sp"
+        android:text="You can press this to enter the app."
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SIGNIN"
+        android:layout_alignStart="@+id/SIGNIN"/>
+
 
 </RelativeLayout>

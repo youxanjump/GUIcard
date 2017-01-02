@@ -65,33 +65,6 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        style="@style/Line"
-        android:id="@+id/Account1"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        app:hintTextAppearance="@style/TextInputHint"
-        app:errorEnabled="true"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@+id/Name1"
-        android:layout_alignEnd="@+id/nextB">
-
-        <EditText
-            android:id="@+id/Account"
-            android:hint="Account"
-            android:textSize="30sp"
-            android:ems="50"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="300dp"
-            android:inputType="textPersonName|textCapWords"
-            android:layout_centerHorizontal="true" />
-
-    </android.support.design.widget.TextInputLayout>
-
     <ImageView
         android:id="@+id/NameG"
         android:layout_width="80dp"
@@ -152,6 +125,32 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/back" />
 
+    <android.support.design.widget.TextInputLayout
+        style="@style/Line"
+        android:id="@+id/Account1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        app:hintTextAppearance="@style/TextInputHint"
+        app:errorEnabled="true"
+        android:layout_marginEnd="19dp"
+        android:layout_below="@+id/AccountG"
+        android:layout_alignEnd="@+id/nextB">
+
+        <EditText
+            android:id="@+id/Account"
+            android:hint="Account"
+            android:textSize="30sp"
+            android:ems="50"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="300dp"
+            android:inputType="textPersonName|textCapWords"
+            android:layout_centerHorizontal="true" />
+
+    </android.support.design.widget.TextInputLayout>
 
 
 </RelativeLayout>

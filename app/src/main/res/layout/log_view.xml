@@ -76,9 +76,9 @@
                 android:text="木吉他"
                 android:textStyle="bold"
                 android:textSize="30sp"
-                android:background="@drawable/btn_pro"
                 android:layout_width="50dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:background="@drawable/btn_pro"/>
 
             <Button
                 android:id="@+id/B2"
@@ -116,7 +116,7 @@
 
             <Button
                 android:id="@+id/B5"
-                android:text="鼓組"
+                android:text="演唱"
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:background="@drawable/btn_pro"
@@ -126,7 +126,7 @@
 
             <Button
                 android:id="@+id/B6"
-                android:text="演唱"
+                android:text="鼓組"
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:background="@drawable/btn_pro"
@@ -142,7 +142,7 @@
 
             <Button
                 android:id="@+id/B7"
-                android:text="鍵盤樂器"
+                android:text="鋼琴"
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:background="@drawable/btn_pro"

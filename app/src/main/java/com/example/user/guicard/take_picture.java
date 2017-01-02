@@ -1,4 +1,4 @@
-package com.example.user.guicard;
+/*package com.example.user.guicard;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -27,9 +27,9 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 
 
-/**
- * Created by USER on 2016/12/19.
- */
+
+ *Created by USER on 2016/12/19.
+
 
 public class take_picture extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,7 +64,7 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
         imgProgress = new ProgressDialog(this);
 
         user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
-                getIntent().getExtras().getString("NAME"),null, getIntent().getExtras().getInt("INTEREST"),getIntent().getExtras().getInt("GENDER"));
+                getIntent().getExtras().getString("NAME"),null, getIntent().getExtras().getInt("INTEREST"));
 
         back.setOnClickListener(this);
         log.setOnClickListener(this);
@@ -89,34 +89,22 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
             if (imageReg == null) {
                 Toast.makeText(take_picture.this, "Please choose your PROFILE PICTURE", Toast.LENGTH_SHORT).show();return;
             }
+            else {
 
-            imgProgress.setMessage("Sign Up ...");
-            imgProgress.show();
+                upLoadPic();
 
+                firebase.child(user.account).child("PASSWORD").setValue(user.password);
+                firebase.child(user.account).child("NAME").setValue(user.name);
+                firebase.child(user.account).child("INTERES").setValue(Integer.toString(user.interes));
+                firebase.child(user.account).child("GENDER").setValue(Integer.toString(user.gender));
+                firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
 
-            StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
-            imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    user.profileUri = taskSnapshot.getDownloadUrl();
-                    imgProgress.dismiss();
-                }
-            });
+                Toast.makeText(take_picture.this, "Sign Success!", Toast.LENGTH_SHORT).show();
 
-
-
-
-                    firebase.child(user.account).child("PASSWORD").setValue(user.password);
-                    firebase.child(user.account).child("NAME").setValue(user.name);
-                    firebase.child(user.account).child("INTERES").setValue(Integer.toString(user.interes));
-                    firebase.child(user.account).child("GENDER").setValue(Integer.toString(user.gender));
-                    firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
-
-                    Toast.makeText(take_picture.this, "Sign Success!", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(take_picture.this, UserInterface.class);
-                    intent.putExtra("MyAccount", user.account);
-                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                Intent intent = new Intent(take_picture.this, UserInterface.class);
+                intent.putExtra("MyAccount", user.account);
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
 
         }
         if (v == slectImage) {
@@ -154,9 +142,7 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-    /**
-     * this function does the crop operation.
-     */
+
     private void performCrop() {
         // take care of exceptions
         try {
@@ -195,4 +181,18 @@ public class take_picture extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-}
+    private void upLoadPic(){
+        imgProgress.setMessage("Sign Up ...");
+        imgProgress.show();
+
+        StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
+        imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                user.profileUri = taskSnapshot.getDownloadUrl();
+                imgProgress.dismiss();
+            }
+        });
+    }
+
+}**/
