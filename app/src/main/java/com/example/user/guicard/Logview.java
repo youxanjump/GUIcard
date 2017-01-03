@@ -84,99 +84,81 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
        if(view==B1){
            if(!B1.isSelected()) {
                B1.setSelected(true);
-               Toast.makeText(view.getContext(), "你選擇木吉他", Toast.LENGTH_SHORT).show();
                user.interes+=1;
            }
            else{
                B1.setSelected(false);
-               Toast.makeText(view.getContext(), "你取消木吉他", Toast.LENGTH_SHORT).show();
                user.interes-=1;
            }
        }if(view==B2){
             if(!B2.isSelected()) {
                 B2.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇演奏", Toast.LENGTH_SHORT).show();
                 user.interes+=2;
             }
             else{
                 B2.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消演奏", Toast.LENGTH_SHORT).show();
                 user.interes-=2;
             }
         }if(view==B3){
             if(!B3.isSelected()) {
                 B3.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇貝斯", Toast.LENGTH_SHORT).show();
                 user.interes+=4;
             }
             else{
                 B3.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消貝斯", Toast.LENGTH_SHORT).show();
                 user.interes-=4;
             }
         }if(view==B4){
             if(!B4.isSelected()) {
                 B4.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇電吉他", Toast.LENGTH_SHORT).show();
                 user.interes+=8;
             }
             else{
                 B4.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消電吉他", Toast.LENGTH_SHORT).show();
                 user.interes-=8;
             }
         }if(view==B5){
             if(!B5.isSelected()) {
                 B5.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇演唱", Toast.LENGTH_SHORT).show();
                 user.interes+=16;
             }
             else{
                 B5.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消演唱", Toast.LENGTH_SHORT).show();
                 user.interes-=16;
             }
         }if(view==B6){
             if(!B6.isSelected()) {
                 B6.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇鼓組", Toast.LENGTH_SHORT).show();
                 user.interes+=32;
             }
             else{
                 B6.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消鼓組", Toast.LENGTH_SHORT).show();
                 user.interes-=32;
             }
         }if(view==B7){
             if(!B7.isSelected()) {
                 B7.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇鋼琴", Toast.LENGTH_SHORT).show();
                 user.interes+=64;
             }
             else{
                 B7.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消鋼琴", Toast.LENGTH_SHORT).show();
                 user.interes-=64;
             }
         }if(view==B8){
             if(!B8.isSelected()) {
                 B8.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇創作", Toast.LENGTH_SHORT).show();
                 user.interes+=128;
             }
             else{
                 B8.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消創作", Toast.LENGTH_SHORT).show();
                 user.interes-=128;
             }
         }if(view==B9){
             if(!B9.isSelected()) {
                 B9.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇其它", Toast.LENGTH_SHORT).show();
             }
             else{
                 B9.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消其它", Toast.LENGTH_SHORT).show();
             }
         }if(view==Back){
             Intent intent = new Intent(Logview.this, Log.class);

@@ -30,6 +30,8 @@
         <activity android:name=".LogMain" />
         <activity android:name=".Friendlist"
             android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

@@ -21,6 +21,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 
@@ -91,12 +94,21 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                 return;
             }
 
-            upLoadPic();
+            imgProgress.setMessage("Sign Up ...");
+            imgProgress.show();
 
-            firebase.child(user.account).child("NAME").setValue(user.name);
-            firebase.child(user.account).child("PASSWORD").setValue(user.password);
-            firebase.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
-            firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+            StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
+            imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    user.profileUri = taskSnapshot.getDownloadUrl();
+                    imgProgress.dismiss();
+                    firebase.child(user.account).child("NAME").setValue(user.name);
+                    firebase.child(user.account).child("PASSWORD").setValue(user.password);
+                    firebase.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
+                    firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+                }
+            });
 
             Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LogPic.this,LogupSuccess.class);
@@ -121,35 +133,6 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
     }
 
 
-
-    //可以裁切圖片大小
-    private void Crop(){
-        try {
-
-            Intent cropIntent = new Intent("com.android.camera.action.CROP");
-            cropIntent.setDataAndType(imageReg, "image/*");
-            cropIntent.putExtra("crop", "true");
-            cropIntent.putExtra("aspectX", 1);
-            cropIntent.putExtra("aspectY", 1);
-            cropIntent.putExtra("outputX", 256);
-            cropIntent.putExtra("outputY", 256);
-            cropIntent.putExtra("outputFormat", "JPEG");
-            cropIntent.putExtra("return_data", true);
-
-            String localTempImgDir = "Hello";
-            String localTempImgFileName = System.currentTimeMillis() + ".jpg";
-            cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageReg);
-
-            File f = new File(Environment.getExternalStorageDirectory() + "/" + localTempImgDir + "/" + localTempImgFileName);
-            imageReg = Uri.fromFile(f);
-
-            startActivityForResult(cropIntent,CROP_PIC);
-
-        } catch (ActivityNotFoundException anfe) {
-            Toast.makeText(this, "This Device doesn't support the crop action!!!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -157,30 +140,18 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
         if (resultCode == RESULT_OK) {
             if(requestCode == GALLERY_INTENT || requestCode == CAMERA_REQUEST_CODE) {
                 imageReg = data.getData();
-                Crop();
-            }
-            else if(requestCode == CROP_PIC){
-                // get the returned data
-                Bundle extras = data.getExtras();
-                // get the cropped bitmap
-                Bitmap thePic = extras.getParcelable("data");
-                imagePreview.setImageBitmap(thePic);
+                CropImage.activity(imageReg)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1,1)
+                        .start(this);
 
+            }
+            if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                imageReg= result.getUri();
+                Picasso.with(getApplicationContext()).load(imageReg).into(imagePreview);
             }
         }
     }
 
-    private void upLoadPic(){
-        imgProgress.setMessage("Sign Up ...");
-        imgProgress.show();
-
-        StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
-        imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                user.profileUri = taskSnapshot.getDownloadUrl();
-                imgProgress.dismiss();
-            }
-        });
-    }
 }
