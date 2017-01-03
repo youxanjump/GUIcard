@@ -64,9 +64,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     return;
                 }
 
-                Intent intent=new Intent(Login.this, UserInterface.class);
+                /*Intent intent=new Intent(Login.this, UserInterface.class);
                 intent.putExtra("MyAccount", sendLoginAccount);
-                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));**/
 
             }
 
