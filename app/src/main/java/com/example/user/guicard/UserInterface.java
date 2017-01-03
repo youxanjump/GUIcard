@@ -1,5 +1,6 @@
 package com.example.user.guicard;
 
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ public class UserInterface extends AppCompatActivity {
 
     private ImageView myProfile;
     private TextView myName;
-    private TextView myGender;
     private TextView myInteres;
 
     private UserInfo user;
@@ -32,12 +32,15 @@ public class UserInterface extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_interface);
+        setContentView(R.layout.userinterface);
 
-        myProfile = (ImageView)findViewById(R.id.profile);
+        myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
-        myGender = (TextView)findViewById(R.id.GENDER);
         myInteres = (TextView)findViewById(R.id.INTERES);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "Sushi/surf.ttf");
+        myName.setTypeface(font);
+        myInteres.setTypeface(font);
 
         myImformation =  new Firebase("https://guicard-de0f4.firebaseio.com/");
         myAccount = getIntent().getExtras().getString("MyAccount");

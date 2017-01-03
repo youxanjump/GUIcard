@@ -35,15 +35,15 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
         TextView next = (TextView) findViewById(R.id.next1);
         TextView back = (TextView) findViewById(R.id.back1);
 
-        B1 = (Button) findViewById(R.id.B1);
-        B2 = (Button) findViewById(R.id.B2);
-        B3 = (Button) findViewById(R.id.B3);
-        B4 = (Button) findViewById(R.id.B4);
-        B5 = (Button) findViewById(R.id.B5);
-        B6 = (Button) findViewById(R.id.B6);
-        B7 = (Button) findViewById(R.id.B7);
-        B8 = (Button) findViewById(R.id.B8);
-        B9 = (Button) findViewById(R.id.B9);
+        B1 = (Button) findViewById(R.id.CB1);
+        B2 = (Button) findViewById(R.id.CB2);
+        B3 = (Button) findViewById(R.id.CB3);
+        B4 = (Button) findViewById(R.id.CB4);
+        B5 = (Button) findViewById(R.id.CB5);
+        B6 = (Button) findViewById(R.id.CB6);
+        B7 = (Button) findViewById(R.id.CB7);
+        B8 = (Button) findViewById(R.id.CB8);
+        B9 = (Button) findViewById(R.id.CB9);
         Back = (Button) findViewById(R.id.back);
         Next = (Button) findViewById(R.id.nextB1);
         user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
@@ -150,12 +150,12 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
         }if(view==B7){
             if(!B7.isSelected()) {
                 B7.setSelected(true);
-                Toast.makeText(view.getContext(), "你選擇鍵盤", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "你選擇鋼琴", Toast.LENGTH_SHORT).show();
                 user.interes+=64;
             }
             else{
                 B7.setSelected(false);
-                Toast.makeText(view.getContext(), "你取消鍵盤", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "你取消鋼琴", Toast.LENGTH_SHORT).show();
                 user.interes-=64;
             }
         }if(view==B8){

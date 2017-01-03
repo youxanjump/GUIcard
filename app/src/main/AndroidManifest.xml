@@ -28,6 +28,8 @@
         <activity android:name=".LogupSuccess"
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".LogMain" />
+        <activity android:name=".Friendlist"
+            android:theme="@android:style/Theme.NoTitleBar"/>
     </application>
 
 </manifest>

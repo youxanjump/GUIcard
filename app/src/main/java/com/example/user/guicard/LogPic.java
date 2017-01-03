@@ -120,25 +120,7 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if(requestCode == GALLERY_INTENT || requestCode == CAMERA_REQUEST_CODE) {
-                imageReg = data.getData();
-                Crop();
-            }
-            else if(requestCode == CROP_PIC){
-                // get the returned data
-                Bundle extras = data.getExtras();
-                // get the cropped bitmap
-                Bitmap thePic = extras.getParcelable("data");
-                imagePreview.setImageBitmap(thePic);
-
-            }
-        }
-    }
 
     //可以裁切圖片大小
     private void Crop(){
@@ -164,7 +146,27 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
             startActivityForResult(cropIntent,CROP_PIC);
 
         } catch (ActivityNotFoundException anfe) {
-            Toast.makeText(this, "This Device doesn't support the camera action!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "This Device doesn't support the crop action!!!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if(requestCode == GALLERY_INTENT || requestCode == CAMERA_REQUEST_CODE) {
+                imageReg = data.getData();
+                Crop();
+            }
+            else if(requestCode == CROP_PIC){
+                // get the returned data
+                Bundle extras = data.getExtras();
+                // get the cropped bitmap
+                Bitmap thePic = extras.getParcelable("data");
+                imagePreview.setImageBitmap(thePic);
+
+            }
         }
     }
 
