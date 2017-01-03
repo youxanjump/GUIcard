@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class UserInterface extends AppCompatActivity {
 
-    private Firebase myImformation;
+  private Firebase myImformation;
 
     private ImageView myProfile;
     private TextView myName;
@@ -70,5 +70,5 @@ public class UserInterface extends AppCompatActivity {
         });
 
     }
-}
+
 
