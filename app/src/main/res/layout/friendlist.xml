@@ -27,7 +27,7 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/next"
+        android:id="@+id/ok"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -57,7 +57,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="12dp"
-        android:layout_above="@+id/next"
+        android:layout_above="@+id/ok"
         android:layout_alignStart="@+id/image2" />
 
     <ImageView

@@ -1,18 +1,13 @@
 package com.example.user.guicard;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.os.Parcelable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 
 public class Friendlist extends AppCompatActivity {
@@ -25,7 +20,7 @@ public class Friendlist extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.title);
         title.setTypeface(font);
 
-        Button ADD = (Button)findViewById(R.id.next);
+        Button ADD = (Button)findViewById(R.id.ok);
 
         ADD.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {

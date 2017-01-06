@@ -41,10 +41,8 @@ public class LogMain extends AppCompatActivity implements View.OnClickListener {
 
         @Override
         public void onClick(View v){
-            if (v == Up)
-                startActivity(new Intent(this, Log.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-            else;
-                startActivity(new Intent(this, LogInview.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            if (v == Up) startActivity(new Intent(this, Log.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            else startActivity(new Intent(this, LogInview.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
 }
 

@@ -3,7 +3,6 @@ package com.example.user.guicard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Button;
@@ -38,7 +37,7 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
         B7 = (Button) findViewById(R.id.CB7);
         B8 = (Button) findViewById(R.id.CB8);
         B9 = (Button) findViewById(R.id.CB9);
-        next = (Button) findViewById(R.id.next);
+        next = (Button) findViewById(R.id.ok);
         TextView OK = (TextView) findViewById(R.id.OK);
         user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
                 getIntent().getExtras().getString("NAME"),0);

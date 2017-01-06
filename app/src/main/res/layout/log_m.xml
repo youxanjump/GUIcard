@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/next"
+        android:id="@+id/ok"
         android:text="Next"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -20,7 +20,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/next" />
+        android:layout_toStartOf="@+id/ok" />
 
     <ImageView
         android:id="@+id/pic"
@@ -142,11 +142,11 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:text="Name"
         android:ems="20"
         android:layout_above="@+id/NameG"
         android:layout_toEndOf="@+id/back1"
-        android:id="@+id/Name" />
+        android:id="@+id/Name"
+        android:hint="Name" />
     </android.support.design.widget.TextInputLayout>
 
 

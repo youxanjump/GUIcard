@@ -34,13 +34,13 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_resourse);
 
-        next = (Button)findViewById(R.id.next);
+        next = (Button)findViewById(R.id.nextB);
         back = (Button)findViewById(R.id.back);
         Account = (EditText)findViewById(R.id.Name);
         PassWord = (EditText)findViewById(R.id.Account);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        TextView OK = (TextView) findViewById(R.id.OK);
+        TextView OK = (TextView) findViewById(R.id.ok);
         TextView Back = (TextView) findViewById(R.id.back1);
         //修改字體
         OK.setTypeface(font);

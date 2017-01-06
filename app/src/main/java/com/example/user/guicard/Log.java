@@ -30,7 +30,7 @@ public class Log extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_m);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        TextView Next = (TextView) findViewById(R.id.next);
+        TextView Next = (TextView) findViewById(R.id.ok);
         TextView Back = (TextView) findViewById(R.id.back1);
         account = (EditText)findViewById(R.id.Account);
         password = (EditText)findViewById(R.id.Password);

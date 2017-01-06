@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.user.guicard.R;
-import com.example.user.guicard.UserInfo;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -38,7 +36,7 @@ public class UserInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
-        List = (Button)findViewById(R.id.next);
+        List = (Button)findViewById(R.id.ok);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);

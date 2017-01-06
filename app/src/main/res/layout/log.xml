@@ -15,17 +15,6 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/Up"
-        android:text="Sign Up"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:background="@drawable/btn_pro"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/imIn" />
-
-    <Button
         android:id="@+id/In"
         android:text="Log In"
         android:textStyle="bold"
@@ -97,6 +86,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/SIGNIN"
         android:layout_alignStart="@+id/SIGNIN"/>
+
+    <Button
+        android:id="@+id/Up"
+        android:text="Sign Up"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@drawable/btn_pro"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/SIGNUP" />
 
 
 </RelativeLayout>
