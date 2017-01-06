@@ -52,19 +52,9 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
         //設定字體
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
         Typeface font1 = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        Typeface font2 = Typeface.createFromAsset(getAssets(), "fonts/Shine.ttf");
         IG.setTypeface(font);
         next.setTypeface(font1);
         back.setTypeface(font1);
-        B1.setTypeface(font2);
-        B2.setTypeface(font2);
-        B3.setTypeface(font2);
-        B4.setTypeface(font2);
-        B5.setTypeface(font2);
-        B6.setTypeface(font2);
-        B7.setTypeface(font2);
-        B8.setTypeface(font2);
-        B9.setTypeface(font2);
 
         B1.setOnClickListener(this);
         B2.setOnClickListener(this);

@@ -1,9 +1,12 @@
 package com.example.user.guicard;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ public class UserInterface extends AppCompatActivity {
     private ImageView myProfile;
     private TextView myName;
     private TextView myInteres;
+    private Button List;
 
     private UserInfo user;
     private String myAccount;
@@ -34,6 +38,7 @@ public class UserInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
+        List = (Button)findViewById(R.id.next);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);
@@ -72,6 +77,12 @@ public class UserInterface extends AppCompatActivity {
             }
         });
 
+        List.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInterface.this,Friendlist.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 

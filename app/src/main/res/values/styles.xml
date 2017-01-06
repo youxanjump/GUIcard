@@ -13,7 +13,7 @@
     </style>
 
     <style name="TextInputHint" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">#20253b</item>
+        <item name="android:textColor">#47c6ba</item>
     </style>
 
 

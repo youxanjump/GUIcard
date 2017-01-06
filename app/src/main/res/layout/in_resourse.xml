@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/OK"
-        android:text="LogIn"
+        android:id="@+id/next"
+        android:text="OK"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_width="wrap_content"
@@ -15,12 +14,12 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/next"
+        android:id="@+id/nextB"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/OK" />
+        android:layout_toStartOf="@+id/next" />
 
     <ImageView
         android:id="@+id/pic"
@@ -31,6 +30,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
 
     <Button
         android:id="@+id/back"
@@ -57,45 +57,44 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:hintTextAppearance="@style/TextInputHint"
-        android:layout_alignBottom="@+id/NameG"
-        android:layout_alignEnd="@+id/next">
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/PasswordG">
 
         <EditText
-            android:id="@+id/Account"
-            android:hint="Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName|textCapSentences"
+            android:text="Account"
             android:textSize="30sp"
-            android:ems="50"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="300dp"
-            android:inputType="textPassword|textCapSentences"
-            android:layout_centerHorizontal="true" />
-
+            android:textStyle="bold"
+            android:ems="20"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/back1"
+            android:id="@+id/Account" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         style="@style/Line"
-        android:id="@+id/Name1"
+        android:id="@+id/Password1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         app:hintTextAppearance="@style/TextInputHint"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/Account1">
+        android:layout_marginBottom="10dp"
+        android:layout_alignBottom="@+id/AccountG"
+        android:layout_alignEnd="@+id/nextB">
 
         <EditText
-            android:id="@+id/Name"
-            android:hint="Account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword|textCapSentences"
+            android:text="Password"
             android:textSize="30sp"
-            android:ems="20"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="300dp"
-            android:inputType="text"
-            android:layout_centerHorizontal="true" />
+            android:textStyle="bold"
+            android:ems="10"
+            android:layout_alignBottom="@+id/Password1"
+            android:layout_toEndOf="@+id/AccountG"
+            android:id="@+id/Password" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -104,17 +103,18 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/guitar"
-        android:layout_above="@+id/NameG"
-        android:layout_toStartOf="@+id/Account1" />
+        android:layout_below="@+id/Account1"
+        android:layout_toStartOf="@+id/Account1"
+        android:layout_marginTop="20dp" />
 
     <ImageView
-        android:id="@+id/NameG"
+        android:id="@+id/PasswordG"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/guitar"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/Name1"
-        android:layout_toStartOf="@+id/Account1" />
+        android:layout_alignBottom="@+id/Account1"
+        android:layout_toStartOf="@+id/Password1" />
+
 
 
 </RelativeLayout>

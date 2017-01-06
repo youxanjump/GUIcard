@@ -17,7 +17,7 @@
         android:id="@+id/image"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        app:srcCompat="@drawable/common_full_open_on_phone"
+        android:background="@drawable/musican"
         android:layout_below="@+id/pic"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp" />

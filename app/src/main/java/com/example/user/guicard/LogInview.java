@@ -32,7 +32,7 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_view);
+        setContentView(R.layout.in_resourse);
 
         next = (Button)findViewById(R.id.next);
         back = (Button)findViewById(R.id.back);

@@ -1,6 +1,7 @@
 package com.example.user.guicard;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -55,5 +56,22 @@ public class LogupSuccess extends Activity {
         Fire.startAnimation(Am);
         Fire1.startAnimation(Am);
         Am.startNow();//啟動動畫
+
+
+        Thread loading = new Thread(){
+
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
+                    Intent intent = new Intent(getApplicationContext(),Friendlist.class);
+                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        };
+        loading.start();
     }
 }

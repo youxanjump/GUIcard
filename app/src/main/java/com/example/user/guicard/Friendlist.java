@@ -1,8 +1,37 @@
 package com.example.user.guicard;
 
-/**
- * Created by nancy on 2017/1/3.
- */
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Parcelable;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class Friendlist {
+
+
+public class Friendlist extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.friendlist);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
+        TextView title = (TextView)findViewById(R.id.title);
+        title.setTypeface(font);
+
+        Button ADD = (Button)findViewById(R.id.next);
+
+        ADD.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Friendlist.this,MakeFriend.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
