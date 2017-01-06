@@ -2,6 +2,7 @@ package com.example.user.guicard;
 
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,27 +25,27 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
     private EditText Account;
     private EditText PassWord;
     private Button next;
-    private Button back;
 
     private String sendLoginAccount;
     private String sendLoginPassword;
+    final TextInputLayout nameLayout = (TextInputLayout)findViewById(R.id.Account1);
+    final EditText nameEditText = (EditText)findViewById(R.id.Account);
+    final TextInputLayout nameLayout1 = (TextInputLayout)findViewById(R.id.Password1);
+    final EditText nameEditText1 = (EditText)findViewById(R.id.Password);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_resourse);
 
-        next = (Button)findViewById(R.id.next);
-        back = (Button)findViewById(R.id.back);
+        next = (Button)findViewById(R.id.nextB);
         Account = (EditText)findViewById(R.id.Name);
         PassWord = (EditText)findViewById(R.id.Account);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        TextView OK = (TextView) findViewById(R.id.OK);
-        TextView Back = (TextView) findViewById(R.id.back1);
+        TextView OK = (TextView) findViewById(R.id.next);
         //修改字體
         OK.setTypeface(font);
-        Back.setTypeface(font);
 
         next.setOnClickListener(this);
 
@@ -52,6 +53,18 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
         @Override
         public void onClick(View v) {
+
+            if(nameEditText.length() == 0){
+                nameLayout.setError("Account doesn't input ");
+            }
+            if(nameEditText1.length() == 0){
+                nameLayout1.setError("Password doesn't input ");
+            }
+            else{
+                nameLayout.setError(null);
+                nameLayout1.setError(null);
+            }
+
             sendLoginAccount = Account.getText().toString();
             sendLoginPassword = PassWord.getText().toString();
 
