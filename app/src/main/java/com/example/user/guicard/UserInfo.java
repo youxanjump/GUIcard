@@ -27,5 +27,8 @@ public class UserInfo {
         this.name=name;
         this.interes=interes;
     }
+    public UserInfo(String account){
+        this.account=account;
+    }
 
 }

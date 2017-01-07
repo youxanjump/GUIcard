@@ -7,7 +7,6 @@ import android.widget.Toast;
 import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Button;
-
 import android.content.Intent;
 
 public class Logview extends AppCompatActivity implements View.OnClickListener{

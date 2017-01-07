@@ -39,20 +39,14 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.in_resourse);
 
         next = (Button)findViewById(R.id.nextB);
-<<<<<<< HEAD
-        back = (Button)findViewById(R.id.back);
-=======
->>>>>>> 8fe6568dc222ed0338040f1048735cf432d87059
         Account = (EditText)findViewById(R.id.Name);
         PassWord = (EditText)findViewById(R.id.Account);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-<<<<<<< HEAD
+
         TextView OK = (TextView) findViewById(R.id.ok);
-        TextView Back = (TextView) findViewById(R.id.back1);
-=======
-        TextView OK = (TextView) findViewById(R.id.next);
->>>>>>> 8fe6568dc222ed0338040f1048735cf432d87059
+
+
         //修改字體
         OK.setTypeface(font);
 

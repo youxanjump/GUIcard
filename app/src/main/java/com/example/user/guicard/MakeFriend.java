@@ -21,6 +21,7 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
     private Button B8;
     private Button B9;
     private Button next;
+    private int wantInterest;
     UserInfo user;
 
     @Override
@@ -39,8 +40,8 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
         B9 = (Button) findViewById(R.id.CB9);
         next = (Button) findViewById(R.id.ok);
         TextView OK = (TextView) findViewById(R.id.OK);
-        user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
-                getIntent().getExtras().getString("NAME"),0);
+        user = new UserInfo(getIntent().getExtras().getString("My Account"));
+        wantInterest = 0;
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
         OK.setTypeface(font);
@@ -63,73 +64,73 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
         if (view == B1) {
             if (!B1.isSelected()) {
                 B1.setSelected(true);
-                user.interes += 1;
+                wantInterest += 1;
             } else {
                 B1.setSelected(false);
-                user.interes -= 1;
+                wantInterest -= 1;
             }
         }
         if (view == B2) {
             if (!B2.isSelected()) {
                 B2.setSelected(true);
-                user.interes += 2;
+                wantInterest += 2;
             } else {
                 B2.setSelected(false);
-                user.interes -= 2;
+                wantInterest -= 2;
             }
         }
         if (view == B3) {
             if (!B3.isSelected()) {
                 B3.setSelected(true);
-                user.interes += 4;
+                wantInterest += 4;
             } else {
                 B3.setSelected(false);
-                user.interes -= 4;
+                wantInterest -= 4;
             }
         }
         if (view == B4) {
             if (!B4.isSelected()) {
                 B4.setSelected(true);
-                user.interes += 8;
+                wantInterest += 8;
             } else {
                 B4.setSelected(false);
-                user.interes -= 8;
+                wantInterest -= 8;
             }
         }
         if (view == B5) {
             if (!B5.isSelected()) {
                 B5.setSelected(true);
-                user.interes += 16;
+                wantInterest += 16;
             } else {
                 B5.setSelected(false);
-                user.interes -= 16;
+                wantInterest -= 16;
             }
         }
         if (view == B6) {
             if (!B6.isSelected()) {
                 B6.setSelected(true);
-                user.interes += 32;
+                wantInterest += 32;
             } else {
                 B6.setSelected(false);
-                user.interes -= 32;
+                wantInterest -= 32;
             }
         }
         if (view == B7) {
             if (!B7.isSelected()) {
                 B7.setSelected(true);
-                user.interes += 64;
+                wantInterest += 64;
             } else {
                 B7.setSelected(false);
-                user.interes -= 64;
+                wantInterest -= 64;
             }
         }
         if (view == B8) {
             if (!B8.isSelected()) {
                 B8.setSelected(true);
-                user.interes += 128;
+                wantInterest += 128;
             } else {
                 B8.setSelected(false);
-                user.interes -= 128;
+                wantInterest -= 128;
             }
         }
         if (view == B9) {
@@ -140,12 +141,16 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
             }
         }
         if (view == next) {
-            Intent intent = new Intent(MakeFriend.this,UserInterface.class);
-            intent.putExtra("ACCOUNT", user.account);
-            intent.putExtra("PASSWORD", user.password);
-            intent.putExtra("NAME", user.name);
-            intent.putExtra("INTEREST", user.interes);
+
+            Intent intent = new Intent(MakeFriend.this,Myfriend.class);
+            intent.putExtra("My Account", user.account);
+            intent.putExtra("WantInterest",wantInterest);
             startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
     }
+
+    private void Sreach(){
+
+    }
+
 }

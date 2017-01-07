@@ -3,10 +3,8 @@ package com.example.user.guicard;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,13 +23,11 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.File;
 
 public class LogPic extends AppCompatActivity implements View.OnClickListener{
 
     private static final int GALLERY_INTENT = 1;
     private static final int CAMERA_REQUEST_CODE = 2;
-    private final int CROP_PIC = 3;
     private Button Pic;
     private Button Alb;
     private Button back;

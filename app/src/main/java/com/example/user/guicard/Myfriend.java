@@ -18,9 +18,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-public class UserInterface extends AppCompatActivity {
+public class Myfriend extends AppCompatActivity {
 
-  private Firebase myInformation;
+    private Firebase myInformation;
 
     private ImageView myProfile;
     private TextView myName;
@@ -46,7 +46,7 @@ public class UserInterface extends AppCompatActivity {
         myInteres.setTypeface(font);
 
         myInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/");
-        myAccount = getIntent().getExtras().getString("MyAccount");
+        myAccount = getIntent().getExtras().getString("My Account");
         //Bundle the user's information
         myInformation.addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,7 +55,7 @@ public class UserInterface extends AppCompatActivity {
                 user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTERES")));
 
                 //show your profile
-                Picasso.with(UserInterface.this).load(user.profileUri).into(myProfile);
+                Picasso.with(Myfriend.this).load(user.profileUri).into(myProfile);
                 myName.setText(user.name);
 
                 while (user.interes > 0) {
@@ -77,8 +77,6 @@ public class UserInterface extends AppCompatActivity {
 
         List.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(UserInterface.this,Friendlist.class);
-                startActivity(intent);
             }
         });
     }

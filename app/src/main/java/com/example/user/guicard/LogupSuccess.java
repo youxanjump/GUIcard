@@ -12,6 +12,9 @@ import android.graphics.Typeface;
 import android.widget.TextView;
 
 public class LogupSuccess extends Activity {
+
+    private UserInfo user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,8 @@ public class LogupSuccess extends Activity {
         TextView WT = (TextView)findViewById(R.id.WT);
         TextView ES = (TextView)findViewById(R.id.ES);
         TextView YM = (TextView)findViewById(R.id.YM);
+
+        user = new UserInfo(getIntent().getExtras().getString("My Account"));
 
 
         //修改字體
@@ -64,7 +69,9 @@ public class LogupSuccess extends Activity {
             public void run() {
                 try {
                     sleep(3000);
-                    Intent intent = new Intent(getApplicationContext(),Friendlist.class);
+
+                    Intent intent = new Intent(LogupSuccess.this,Friendlist.class);
+                    intent.putExtra("My Account",user.account);
                     startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
