@@ -9,12 +9,15 @@
 
     <style name="Line" parent="@style/AppTheme">
         <!-- ...other style settings -->
-        <item name="colorAccent">#0000FF</item>
+        <item name="colorAccent">#47c6ba</item>
     </style>
 
     <style name="TextInputHint" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">#47c6ba</item>
+        <item name="android:textColor">#17dcc3</item>
     </style>
 
-
+    <style name="TextInputError" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">#e50000</item>
+    </style>
 </resources>

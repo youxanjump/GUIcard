@@ -30,9 +30,10 @@
         android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MP"
-        android:layout_alignEnd="@+id/MP"
-        android:layout_marginTop="11dp" />
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/MP" />
 
     <TextView
         android:id="@+id/GUI"
@@ -42,8 +43,8 @@
         android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="56dp"
         android:layout_alignBottom="@+id/Card"
-        android:layout_toStartOf="@+id/Card" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="43dp" />
 </RelativeLayout>
