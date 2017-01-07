@@ -5,18 +5,6 @@
     android:background="@drawable/ground">
 
     <TextView
-        android:id="@+id/title"
-        android:text="Friend List"
-        android:textSize="50sp"
-        android:textColor="#440d18"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
-
-    <TextView
         android:id="@+id/OK"
         android:text="ADD"
         android:textStyle="bold"
@@ -34,41 +22,34 @@
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/OK" />
 
-    <ImageView
-        android:id="@+id/image2"
-        android:background="@drawable/music3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/image"
-        android:layout_alignStart="@+id/image" />
+    <TextView
+        android:id="@+id/title"
+        android:text="Friend List"
+        android:textSize="50sp"
+        android:textColor="#440d18"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/image3"
         android:background="@drawable/music4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignTop="@+id/image2"
-        android:layout_alignStart="@+id/image1" />
+        android:layout_alignTop="@+id/image5"
+        android:layout_alignStart="@+id/image" />
 
     <ImageView
         android:id="@+id/image4"
         android:background="@drawable/music5"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="12dp"
-        android:layout_above="@+id/next"
-        android:layout_alignStart="@+id/image2" />
-
-    <ImageView
-        android:id="@+id/image"
-        android:background="@drawable/music1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/title"
-        android:layout_alignStart="@+id/title"
-        android:layout_marginStart="15dp" />
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/image1"
+        android:layout_alignStart="@+id/image1" />
 
     <ImageView
         android:id="@+id/image1"
@@ -76,7 +57,16 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignTop="@+id/image"
-        android:layout_alignEnd="@+id/title" />
+        android:layout_toStartOf="@+id/next"
+        android:layout_marginEnd="12dp" />
+
+    <ImageView
+        android:id="@+id/image2"
+        android:background="@drawable/music3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/image1"
+        android:layout_alignStart="@+id/next" />
 
     <ImageView
         android:id="@+id/image5"
@@ -84,7 +74,29 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignTop="@+id/image4"
-        android:layout_alignStart="@+id/image3" />
+        android:layout_alignStart="@+id/image2" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:background="@drawable/music1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/title"
+        android:layout_toStartOf="@+id/image4" />
+
+    <TextView
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#230015"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignEnd="@+id/title"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="26dp"
+        android:id="@+id/time" />
 
 
 </RelativeLayout>
