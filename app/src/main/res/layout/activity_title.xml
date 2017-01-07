@@ -12,19 +12,6 @@
     tools:context="com.example.user.guicard.MainActivity">
 
     <TextView
-        android:id="@+id/GUI"
-        android:text="GUI"
-        android:textColor="#440d18"
-        android:textStyle="bold"
-        android:textSize="80sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
-        android:layout_marginStart="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:id="@+id/Card"
         android:text="Card"
         android:textColor="#440d18"
@@ -32,9 +19,22 @@
         android:textSize="80sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="18dp"
         android:layout_alignTop="@+id/GUI"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="67dp" />
+        android:layout_marginTop="80dp" />
+
+    <TextView
+        android:id="@+id/GUI"
+        android:text="GUI"
+        android:textColor="#440d18"
+        android:textStyle="bold"
+        android:textSize="80sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="66dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="46dp" />
 
 </RelativeLayout>
