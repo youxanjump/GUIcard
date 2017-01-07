@@ -25,12 +25,12 @@ public class Alarm extends AppCompatActivity {
         final int notifyID = 1;
         NotificationManager noMgr = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         Calendar mCal = Calendar.getInstance();
-        mCal.set(Calendar.HOUR_OF_DAY, 0);
-        mCal.set(Calendar.MINUTE, 0);
+        mCal.set(Calendar.HOUR_OF_DAY, 18);
+        mCal.set(Calendar.MINUTE,40);
         mCal.set(Calendar.SECOND, 0);
 
         //當使用者按下通知欄中的通知時要開啟的 Activity
-        Intent intent = new Intent(Alarm.this, MainActivity.class);
+        Intent intent = new Intent(Alarm.this, MakeFriend.class);
         //建立待處理意圖
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
         //建立通知物件
