@@ -35,6 +35,8 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
     private ImageView imagePreview;
 
     private Firebase firebase;
+    private Firebase myInformation;
+    private Firebase searchFriend;
     private StorageReference imaStorage;
     private ProgressDialog imgProgress;
     UserInfo user;
@@ -61,12 +63,16 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
         Back.setTypeface(font1);
         Next.setTypeface(font1);
 
+        user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
+                getIntent().getExtras().getString("NAME"),null, getIntent().getExtras().getInt("INTEREST"));
+
         firebase = new Firebase("https://guicard-de0f4.firebaseio.com/");
+        myInformation = firebase.child("USER");
+        searchFriend =firebase.child("SearchFriend");
         imaStorage = FirebaseStorage.getInstance().getReference();
         imgProgress = new ProgressDialog(this);
 
-        user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
-                getIntent().getExtras().getString("NAME"),null, getIntent().getExtras().getInt("INTEREST"));
+
 
         back.setOnClickListener(this);
         OK.setOnClickListener(this);
@@ -99,10 +105,10 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     user.profileUri = taskSnapshot.getDownloadUrl();
                     imgProgress.dismiss();
-                    firebase.child(user.account).child("NAME").setValue(user.name);
-                    firebase.child(user.account).child("PASSWORD").setValue(user.password);
-                    firebase.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
-                    firebase.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+                    searchFriend.child(Integer.toString(user.interes)).child(user.account).setValue(false);
+                    myInformation.child(user.account).child("NAME").setValue(user.name);
+                    myInformation.child(user.account).child("PASSWORD").setValue(user.password);
+                    myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
                 }
             });
 
