@@ -1,4 +1,4 @@
-package com.example.user.guicard;
+﻿package com.example.user.guicard;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -108,6 +108,7 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                     searchFriend.child(Integer.toString(user.interes)).child(user.account).setValue(false);
                     myInformation.child(user.account).child("NAME").setValue(user.name);
                     myInformation.child(user.account).child("PASSWORD").setValue(user.password);
+		    myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
                     myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
                 }
             });
