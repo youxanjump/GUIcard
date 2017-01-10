@@ -45,7 +45,7 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
 
-        TextView OK = (TextView) findViewById(R.id.ok);
+        TextView OK = (TextView) findViewById(R.id.MYINFOR);
 
 
         //修改字體
@@ -90,8 +90,8 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
                         return;
                     }
                     imgProgress.dismiss();
-                    Intent intent = new Intent(LogInview.this,UserInterface.class);
-                    intent.putExtra("MyAccount",sendLoginAccount);//處理Activity間資料傳遞(資料名稱,資料內容)
+                    Intent intent = new Intent(LogInview.this,Friendlist.class);
+                    intent.putExtra("My Account",sendLoginAccount);//處理Activity間資料傳遞(資料名稱,資料內容)
                     startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }
 

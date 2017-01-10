@@ -11,7 +11,7 @@
     tools:context="com.example.user.guicard.LogInview">
 
     <TextView
-        android:id="@+id/ok"
+        android:id="@+id/MYINFOR"
         android:text="OK"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -26,7 +26,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/ok" />
+        android:layout_toStartOf="@+id/MYINFOR" />
 
     <ImageView
         android:id="@+id/pic"

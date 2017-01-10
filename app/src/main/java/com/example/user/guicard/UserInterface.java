@@ -35,16 +35,19 @@ public class UserInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
-        List = (Button)findViewById(R.id.ok);
+        List = (Button)findViewById(R.id.MYINFOR);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);
+
+        findViewById(R.id.FUNCTION).setVisibility(View.GONE);
+        findViewById(R.id.FUNCTION_TEXT).setVisibility(View.GONE);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
         myName.setTypeface(font);
         myInteres.setTypeface(font);
         myInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
-        myAccount = getIntent().getExtras().getString("MyAccount");
+        myAccount = getIntent().getExtras().getString("My Account");
         //Bundle the user's information
         myInformation.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,7 +79,7 @@ public class UserInterface extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserInterface.this,Friendlist.class);
                 intent.putExtra("My Account",user.account);
-                startActivity(intent);
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
     }

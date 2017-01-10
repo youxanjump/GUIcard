@@ -30,7 +30,7 @@ public class Log extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_m);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        TextView Next = (TextView) findViewById(R.id.ok);
+        TextView Next = (TextView) findViewById(R.id.MYINFOR);
         TextView Back = (TextView) findViewById(R.id.back1);
         account = (EditText)findViewById(R.id.Account);
         password = (EditText)findViewById(R.id.Password);
@@ -43,7 +43,7 @@ public class Log extends AppCompatActivity implements View.OnClickListener {
         Next.setTypeface(font);
         Back.setTypeface(font);
 
-        firebase = new Firebase("https://guicard-de0f4.firebaseio.com/");
+        firebase = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
         if(getIntent().getExtras()!=null){
             account.setText(getIntent().getExtras().getString("ACCOUNT"));
             password.setText(getIntent().getExtras().getString("PASSWORD"));
@@ -70,7 +70,7 @@ public class Log extends AppCompatActivity implements View.OnClickListener {
                         intent.putExtra("PASSWORD", user.password);
                         intent.putExtra("NAME", user.name);
                         startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }else
+                    }else if(dataSnapshot.child(user.account).exists())
                         Toast.makeText(Log.this, "This account has already exists!", Toast.LENGTH_SHORT).show();
                 }
 

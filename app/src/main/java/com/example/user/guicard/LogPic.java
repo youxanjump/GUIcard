@@ -119,26 +119,31 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(!judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists())searchNum++;
-                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(false);
+                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(false));
                             searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("USER").setValue(user.account);
                             judgeExsit = true;
-                            myInformation.child(user.account).child("NAME").setValue(user.name);
-                            myInformation.child(user.account).child("PASSWORD").setValue(user.password);
-                            myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
-                            myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+
                         }
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
                         }
-                    });
 
+                    });
+                    myInformation.child(user.account).child("NAME").setValue(user.name);
+                    myInformation.child(user.account).child("PASSWORD").setValue(user.password);
+                    myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
+                    myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+                    myInformation.child(user.account).child("FRIEND").child(Integer.toString(1)).setValue(Boolean.toString(false));
+                    myInformation.child(user.account).child("ADDFRIEND").setValue(Boolean.toString(false));
+                    myInformation.child(user.account).child("BEADDED").setValue(Boolean.toString(false));
+                    Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogPic.this,LogupSuccess.class);
+                    intent.putExtra("My Account",user.account);
+                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }
             });
 
-            Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LogPic.this,LogupSuccess.class);
-            intent.putExtra("My Account",user.account);
-            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
         }
         //從相簿中挑照片
         if(view == Alb){
