@@ -1,6 +1,7 @@
 package com.example.user.guicard;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,16 +23,14 @@ import java.util.Map;
 public class LogInview extends AppCompatActivity implements View.OnClickListener{
 
     private Firebase Users;
-    private EditText Account;
-    private EditText PassWord;
     private Button next;
-
+    private ProgressDialog imgProgress;
     private String sendLoginAccount;
     private String sendLoginPassword;
-    final TextInputLayout nameLayout = (TextInputLayout)findViewById(R.id.Account1);
-    final EditText nameEditText = (EditText)findViewById(R.id.Account);
-    final TextInputLayout nameLayout1 = (TextInputLayout)findViewById(R.id.Password1);
-    final EditText nameEditText1 = (EditText)findViewById(R.id.Password);
+    private TextInputLayout nameLayout;
+    private EditText account;
+    private TextInputLayout nameLayout1;
+    private EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,10 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.in_resourse);
 
         next = (Button)findViewById(R.id.nextB);
-        Account = (EditText)findViewById(R.id.Name);
-        PassWord = (EditText)findViewById(R.id.Account);
+        nameLayout = (TextInputLayout)findViewById(R.id.Account1);
+        account = (EditText)findViewById(R.id.Account);
+        nameLayout1 = (TextInputLayout)findViewById(R.id.Password1);
+        password = (EditText)findViewById(R.id.Password);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
 
@@ -49,7 +50,7 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
         //修改字體
         OK.setTypeface(font);
-
+        imgProgress = new ProgressDialog(this);
         next.setOnClickListener(this);
 
     }
@@ -57,10 +58,10 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         @Override
         public void onClick(View v) {
 
-            if(nameEditText.length() == 0){
+            if(account.length() == 0){
                 nameLayout.setError("Account doesn't input ");
             }
-            if(nameEditText1.length() == 0){
+            if(password.length() == 0){
                 nameLayout1.setError("Password doesn't input ");
             }
             else{
@@ -68,10 +69,11 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
                 nameLayout1.setError(null);
             }
 
-            sendLoginAccount = Account.getText().toString();
-            sendLoginPassword = PassWord.getText().toString();
-
-            Users = new Firebase("https://guicard-de0f4.firebaseio.com/");
+            sendLoginAccount = account.getText().toString();
+            sendLoginPassword = password.getText().toString();
+            imgProgress.setMessage("Loading ...");
+            imgProgress.show();
+            Users = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
             Users.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,12 +85,12 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
                     Map<String,String> map = dataSnapshot.child(sendLoginAccount).getValue(Map.class);
 
-                    if(!sendLoginPassword.equals(map.get("Password"))){
+                    if(!sendLoginPassword.equals(map.get("PASSWORD"))){
                         Toast.makeText(LogInview.this,"Enter the Wrong Password!!!",Toast.LENGTH_SHORT).show();
                         return;
                     }
-
-                    Intent intent = new Intent(LogInview.this,LogupSuccess.class);
+                    imgProgress.dismiss();
+                    Intent intent = new Intent(LogInview.this,UserInterface.class);
                     intent.putExtra("MyAccount",sendLoginAccount);//處理Activity間資料傳遞(資料名稱,資料內容)
                     startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }

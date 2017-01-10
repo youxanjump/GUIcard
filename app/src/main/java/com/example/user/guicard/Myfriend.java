@@ -1,5 +1,6 @@
 package com.example.user.guicard;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -20,16 +21,16 @@ import java.util.Map;
 
 public class Myfriend extends AppCompatActivity {
 
-    private Firebase myInformation;
+    private Firebase friendInformation;
 
     private ImageView myProfile;
     private TextView myName;
     private TextView myInteres;
     private Button List;
-
-    private UserInfo user;
-    private String myAccount;
-    private String[] interes = {"木吉他","電吉他","貝斯","鍵盤","鼓組","演唱","演奏","創作"};
+    private ProgressDialog imgProgress;
+    private UserInfo myfriend;
+    private String friendAccount;
+    private String[] interes = {"木吉他","演奏","貝斯","電吉他","演唱","鼓組","鍵盤","創作"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,32 +42,36 @@ public class Myfriend extends AppCompatActivity {
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "Sushi/surf.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
         myName.setTypeface(font);
         myInteres.setTypeface(font);
 
-        myInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/");
-        myAccount = getIntent().getExtras().getString("My Account");
+        friendInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
+        friendAccount = getIntent().getExtras().getString("Friend");
+        imgProgress = new ProgressDialog(this);
+        imgProgress.setMessage("Loading ...");
+        imgProgress.show();
         //Bundle the user's information
-        myInformation.addValueEventListener(new ValueEventListener() {
+        friendInformation.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, String> map = dataSnapshot.child(myAccount).getValue(Map.class);
-                user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTERES")));
+                Map<String, String> map = dataSnapshot.child(friendAccount).getValue(Map.class);
+                myfriend = new UserInfo(friendAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTEREST")));
 
                 //show your profile
-                Picasso.with(Myfriend.this).load(user.profileUri).into(myProfile);
-                myName.setText(user.name);
+                Picasso.with(Myfriend.this).load(myfriend.profileUri).into(myProfile);
+                imgProgress.dismiss();
+                myName.setText(myfriend.name);
 
-                while (user.interes > 0) {
+                while (myfriend.interes > 0) {
                     int interesCount = 0;
                     int interesOfMine = 1;
-                    if(user.interes==1){user.interes=0;interesCount++;}
-                    while (user.interes > interesOfMine) {
+                    if(myfriend.interes==1){myfriend.interes=0;interesCount++;}
+                    while (myfriend.interes > interesOfMine) {
                         interesOfMine = 2 * interesOfMine;
                         interesCount++;
                     }
-                    user.interes = user.interes - interesOfMine/2;
+                    myfriend.interes = myfriend.interes - interesOfMine/2;
                     myInteres.append(interes[interesCount-1]+" ");
                 }
             }
