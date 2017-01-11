@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,6 @@
     tools:context="com.example.user.guicard.Friendlist">
 
     <TextView
-<<<<<<< HEAD
         android:id="@+id/OK"
         android:text="ADD"
         android:textStyle="bold"
@@ -18,147 +18,11 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/ok"
-        android:background="@drawable/icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/OK" />
-
-    <GridLayout
-=======
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#230015"
->>>>>>> 80b7590ac273a1a3b788fdbdbdd1db7be8528195
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp">
-
-    </GridLayout>
-
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/title"
-        android:text="Friend List"
-        android:textSize="50sp"
-        android:textColor="#440d18"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:background="@drawable/music5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_alignStart="@+id/ok" />
-=======
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/time"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:background="@drawable/music5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_margin="15dp" />
->>>>>>> 80b7590ac273a1a3b788fdbdbdd1db7be8528195
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:background="@drawable/music3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_above="@+id/imageView6"
-        android:layout_toStartOf="@+id/imageView3" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:background="@drawable/music4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:background="@drawable/music1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:layout_marginBottom="138dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_above="@+id/ok"
-        android:layout_toStartOf="@+id/imageView3" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:background="@drawable/music2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_row="2"
-        android:layout_column="1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_below="@+id/imageView4"
-        android:layout_toStartOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:background="@drawable/music6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toEndOf="@+id/imageView2" />
-
-    <Button
         android:id="@+id/MYINFOR"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/MYINFOR" />
+        android:layout_alignParentBottom="true" />
 
     <Button
         android:layout_width="60dp"
@@ -170,6 +34,24 @@
         android:layout_marginStart="15dp" />
 
     <TextView
+        android:text="MyInformation"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MYINFORTEXT"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/MYINFOR"/>
+
+    <Button
+        android:id="@+id/ok"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
         android:id="@+id/title"
         android:text="Friend List"
         android:textSize="50sp"
@@ -177,38 +59,67 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/INVITED"
-        android:layout_marginStart="31dp" />
+        android:layout_toStartOf="@+id/OK" />
 
-    <TextView
-        android:text="MyInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/MYINFORTEXT"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/MYINFOR"
-        android:textSize="18sp" />
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music1"
+        android:layout_marginTop="93dp"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/INVITED"
+        android:layout_alignStart="@+id/INVITED" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music2"
+        android:id="@+id/imageView2"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music3"
+        android:id="@+id/imageView3"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music5"
+        android:id="@+id/imageView9"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music4"
+        android:layout_alignTop="@+id/imageView9"
+        android:layout_alignStart="@+id/imageView" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/music6"
+        android:id="@+id/imageView10"
+        android:layout_alignTop="@+id/imageView9"
+        android:layout_toEndOf="@+id/imageView9" />
 
     <Button
-        android:id="@+id/ok"
+        android:id="@+id/nextB"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/time" />
-
-    <TextView
-        android:id="@+id/OK"
-        android:text="ADD"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/time" />
+        android:layout_toEndOf="@+id/imageView9"
+        android:layout_marginStart="25dp" />
 
 
 </RelativeLayout>

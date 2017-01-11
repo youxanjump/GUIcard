@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.TextViewCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,10 +20,12 @@ import com.squareup.picasso.Picasso;
 
 public class Friendlist extends Activity {
     private Button ADD;
-    private Button MYINFORMATION;
+    private Button MYINFORMAT;
     private Button INVITED;
     private Typeface font;
     private TextView title;
+    private TextView OK;
+    private TextView MYINFORTEXT;
     private UserInfo user;
     private ImageView friend;
 
@@ -35,7 +38,12 @@ public class Friendlist extends Activity {
 
         font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
         title = (TextView)findViewById(R.id.title);
+        OK = (TextView)findViewById(R.id.OK);
+        MYINFORTEXT = (TextView)findViewById(R.id.MYINFORTEXT);
         title.setTypeface(font);
+        OK.setTypeface(font);
+        MYINFORTEXT.setTypeface(font);
+
 
         user = new UserInfo(getIntent().getExtras().getString("My Account"));
         myInformation = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");

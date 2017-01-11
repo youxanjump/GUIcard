@@ -21,14 +21,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        android:id="@+id/nextB"
-        android:background="@drawable/icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/MYINFOR" />
-
     <ImageView
         android:id="@+id/pic"
         android:layout_width="wrap_content"
@@ -110,6 +102,14 @@
             android:id="@+id/Password" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/nextB"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/MYINFOR" />
 
 
 </RelativeLayout>

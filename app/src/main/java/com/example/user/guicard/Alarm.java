@@ -30,7 +30,7 @@ public class Alarm extends AppCompatActivity {
         mCal.set(Calendar.SECOND, 0);
 
         //當使用者按下通知欄中的通知時要開啟的 Activity
-        Intent intent = new Intent(Alarm.this, MakeFriend.class);
+        Intent intent = new Intent(Alarm.this, MainActivity.class);
         //建立待處理意圖
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
         //建立通知物件
