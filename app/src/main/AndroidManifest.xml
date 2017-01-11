@@ -22,29 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Log"
-            android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".Logview"
-            android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".Log" />
+        <activity android:name=".Logview" />
         <activity android:name=".LogInview" />
-        <activity android:name=".UserInterface"
-            android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".UserInterface"/>
         <activity android:name=".LogPic" />
         <activity android:name=".BeAddedFriend" />
         <activity android:name=".LogupSuccess"
             android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".LogMain"
-            android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".LogMain"/>
         <activity android:name=".Friendlist"
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name=".MakeFriend"
-                  android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".Myfriend"
-            android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".Alarm"
-            android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name=".MakeFriend"/>
+        <activity android:name=".Myfriend"/>
+        <activity android:name=".Alarm">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
