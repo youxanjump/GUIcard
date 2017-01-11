@@ -26,34 +26,34 @@ public class UserInterface extends AppCompatActivity {
     private TextView myName;
     private TextView myInteres;
     private Button List;
-
     private UserInfo user;
     private String myAccount;
-    private String[] interes = {"木吉他","電吉他","貝斯","鍵盤","鼓組","演唱","演奏","創作"};
+    private String[] interes = {"木吉他","演奏","貝斯","電吉他","演唱","鼓組","鍵盤","創作"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
-        List = (Button)findViewById(R.id.ok);
+        List = (Button)findViewById(R.id.MYINFOR);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "Sushi/surf.ttf");
+        findViewById(R.id.FUNCTION).setVisibility(View.GONE);
+        findViewById(R.id.FUNCTION_TEXT).setVisibility(View.GONE);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
         myName.setTypeface(font);
         myInteres.setTypeface(font);
-
-        myInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/");
-        myAccount = getIntent().getExtras().getString("MyAccount");
+        myInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
+        myAccount = getIntent().getExtras().getString("My Account");
         //Bundle the user's information
         myInformation.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, String> map = dataSnapshot.child(myAccount).getValue(Map.class);
-                user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTERES")));
-
+                user = new UserInfo(myAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTEREST")));
                 //show your profile
                 Picasso.with(UserInterface.this).load(user.profileUri).into(myProfile);
                 myName.setText(user.name);
@@ -78,7 +78,8 @@ public class UserInterface extends AppCompatActivity {
         List.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(UserInterface.this,Friendlist.class);
-                startActivity(intent);
+                intent.putExtra("My Account",user.account);
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
     }

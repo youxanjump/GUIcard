@@ -7,6 +7,7 @@
     tools:context="com.example.user.guicard.Friendlist">
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/OK"
         android:text="ADD"
         android:textStyle="bold"
@@ -25,6 +26,11 @@
         android:layout_toStartOf="@+id/OK" />
 
     <GridLayout
+=======
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#230015"
+>>>>>>> 80b7590ac273a1a3b788fdbdbdd1db7be8528195
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -38,6 +44,7 @@
 
     </GridLayout>
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/title"
         android:text="Friend List"
@@ -59,6 +66,31 @@
         android:layout_marginRight="15dp"
         android:layout_alignTop="@+id/imageView3"
         android:layout_alignStart="@+id/ok" />
+=======
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/time"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:background="@drawable/music5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_margin="15dp" />
+>>>>>>> 80b7590ac273a1a3b788fdbdbdd1db7be8528195
 
     <ImageView
         android:id="@+id/imageView4"
@@ -119,6 +151,64 @@
         android:layout_marginRight="15dp"
         android:layout_alignTop="@+id/imageView2"
         android:layout_toEndOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/MYINFOR"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/MYINFOR" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/INVITED"
+        android:background="@drawable/icon"
+        android:layout_alignTop="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:text="Friend List"
+        android:textSize="50sp"
+        android:textColor="#440d18"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/INVITED"
+        android:layout_marginStart="31dp" />
+
+    <TextView
+        android:text="MyInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MYINFORTEXT"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/MYINFOR"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/ok"
+        android:background="@drawable/icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/time" />
+
+    <TextView
+        android:id="@+id/OK"
+        android:text="ADD"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/time" />
 
 
 </RelativeLayout>

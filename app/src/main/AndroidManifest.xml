@@ -30,6 +30,7 @@
         <activity android:name=".UserInterface"
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".LogPic" />
+        <activity android:name=".BeAddedFriend" />
         <activity android:name=".LogupSuccess"
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".LogMain"

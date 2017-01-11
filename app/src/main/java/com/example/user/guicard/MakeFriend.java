@@ -1,5 +1,6 @@
 package com.example.user.guicard;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,14 @@ import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Map;
 
 
 public class MakeFriend extends AppCompatActivity implements View.OnClickListener{
@@ -22,7 +31,13 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
     private Button B9;
     private Button next;
     private int wantInterest;
+    private ProgressDialog imgProgress;
+
+    private Firebase searchFriend;
+    private Firebase myInformation;
+
     UserInfo user;
+    UserInfo friend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +53,13 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
         B7 = (Button) findViewById(R.id.CB7);
         B8 = (Button) findViewById(R.id.CB8);
         B9 = (Button) findViewById(R.id.CB9);
-        next = (Button) findViewById(R.id.ok);
+        next = (Button) findViewById(R.id.MYINFOR);
         TextView OK = (TextView) findViewById(R.id.OK);
         user = new UserInfo(getIntent().getExtras().getString("My Account"));
         wantInterest = 0;
+        searchFriend = new Firebase("https://guicard-de0f4.firebaseio.com/").child("SearchFriend");
+        myInformation = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
+        imgProgress = new ProgressDialog(this);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
         OK.setTypeface(font);
@@ -141,16 +159,50 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
             }
         }
         if (view == next) {
+            imgProgress.setMessage("Search ...");
+            imgProgress.show();
+            searchFriend.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int searchNum = 1;
+                    Map<String, String> map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
 
-            Intent intent = new Intent(MakeFriend.this,Myfriend.class);
-            intent.putExtra("My Account", user.account);
-            intent.putExtra("WantInterest",wantInterest);
-            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    if(!(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())){
+                        imgProgress.dismiss();
+                        Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    while((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").getValue()).equals(Boolean.toString(true)))
+                    {
+
+                        if(!(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())){
+                            imgProgress.dismiss();
+                            Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        searchNum++;
+                        map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
+
+                    }
+                    if(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists()){
+                        friend = new UserInfo(map.get("USER"));
+                        searchFriend.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(true));
+                        myInformation.child(user.account).child("ADDFRIEND").setValue(friend.account);
+                        imgProgress.dismiss();
+                        Intent intent = new Intent(MakeFriend.this,Myfriend.class);
+                        intent.putExtra("My Account", user.account);
+                        startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                }
+            });
+
         }
     }
 
-    private void Sreach(){
-
-    }
 
 }

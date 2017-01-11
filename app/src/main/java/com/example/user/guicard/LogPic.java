@@ -14,7 +14,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.android.gms.common.api.BooleanResult;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -22,6 +26,8 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.util.Map;
 
 
 public class LogPic extends AppCompatActivity implements View.OnClickListener{
@@ -33,12 +39,14 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
     private Button back;
     private Button OK;
     private ImageView imagePreview;
+    private int searchNum;
 
     private Firebase firebase;
     private Firebase myInformation;
     private Firebase searchFriend;
     private StorageReference imaStorage;
     private ProgressDialog imgProgress;
+    private Boolean judgeExsit;
     UserInfo user;
     Uri imageReg;
 
@@ -54,6 +62,7 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
         back = (Button) findViewById(R.id.nextB1);
         OK = (Button) findViewById(R.id.back);
         imagePreview = (ImageView)findViewById(R.id.image);
+        judgeExsit = false;
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
         Pic.setTypeface(font);
@@ -105,18 +114,36 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     user.profileUri = taskSnapshot.getDownloadUrl();
                     imgProgress.dismiss();
-                    searchFriend.child(Integer.toString(user.interes)).child(user.account).setValue(false);
+                    searchNum = 1;
+                    searchFriend.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(!judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists())searchNum++;
+                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(false));
+                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("USER").setValue(user.account);
+                            judgeExsit = true;
+
+                        }
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                        }
+
+                    });
                     myInformation.child(user.account).child("NAME").setValue(user.name);
                     myInformation.child(user.account).child("PASSWORD").setValue(user.password);
-		    myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
+                    myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
                     myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+                    myInformation.child(user.account).child("FRIEND").child(Integer.toString(1)).setValue(Boolean.toString(false));
+                    myInformation.child(user.account).child("ADDFRIEND").setValue(Boolean.toString(false));
+                    myInformation.child(user.account).child("BEADDED").setValue(Boolean.toString(false));
+                    Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogPic.this,LogupSuccess.class);
+                    intent.putExtra("My Account",user.account);
+                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }
             });
 
-            Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LogPic.this,LogupSuccess.class);
-            intent.putExtra("My Account",user.account);
-            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
         }
         //從相簿中挑照片
         if(view == Alb){

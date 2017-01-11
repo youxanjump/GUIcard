@@ -23,7 +23,7 @@
         android:layout_marginTop="21dp" />
 
     <Button
-        android:id="@+id/ok"
+        android:id="@+id/MYINFOR"
         android:background="@drawable/icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -34,12 +34,11 @@
     <TextView
         android:id="@+id/Next"
         android:text="GotoList"
-        android:textStyle="bold"
-        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
     <TextView
         android:id="@+id/NAME"
@@ -57,6 +56,24 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/NAME"
         android:layout_alignStart="@+id/NAME" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/FUNCTION"
+        android:id="@+id/FUNCTION_TEXT"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+    <Button
+        android:id="@+id/FUNCTION"
+        android:background="@drawable/icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
