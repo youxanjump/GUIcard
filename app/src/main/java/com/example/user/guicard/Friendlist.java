@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.TextViewCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +27,9 @@ public class Friendlist extends Activity {
     private TextView OK;
     private TextView MYINFORTEXT;
     private UserInfo user;
-    private ImageView friend;
+    private GridLayout imageLayout;
+    private int friendNum;
+    private ImageView[] v = new ImageView[6];
 
     private Firebase myInformation;
 
@@ -48,21 +50,28 @@ public class Friendlist extends Activity {
         user = new UserInfo(getIntent().getExtras().getString("My Account"));
         myInformation = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
 
-        friend = (ImageView)findViewById(R.id.imageView);
+        friendNum = 1;
+        imageLayout = (GridLayout) findViewById(R.id.imageLayout);
 
 
-
-        ADD = (Button)findViewById(R.id.ok);
-        MYINFORMATION = (Button)findViewById(R.id.MYINFOR);
-        INVITED = (Button)findViewById(R.id.INVITED);
+        MYINFORMATION = (Button)findViewById(R.id.myInformationView);
+        ADD = (Button)findViewById(R.id.ADD);
+        INVITED = (Button)findViewById(R.id.beAdded);
 
         myInformation.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if( dataSnapshot.child(user.account).child("BEADDED").getValue().equals(Boolean.toString(false)))INVITED.setVisibility(View.GONE);
-                if(!dataSnapshot.child(user.account).child("FRIEND").child("1").getValue().equals("false")){
-                    String myfriend = (String) dataSnapshot.child(user.account).child("FRIEND").child("1").getValue();
-                    Picasso.with(Friendlist.this).load(Uri.parse((String) dataSnapshot.child(myfriend).child("PROFILE").getValue())).into(friend);
+                while (!dataSnapshot.child(user.account).child("FRIEND").child(Integer.toString(friendNum)).getValue().equals("false")){
+                    String myfriend = (String) dataSnapshot.child(user.account).child("FRIEND").child(Integer.toString(friendNum)).getValue();
+                    v[friendNum-1] = new ImageView(Friendlist.this);
+                    imageLayout.addView(v[friendNum-1]);
+                    Picasso.with(Friendlist.this)
+                            .load(Uri.parse((String) dataSnapshot.child(myfriend).child("PROFILE").getValue()))
+                            .resize(150,150)
+                            .into(v[friendNum-1]);
+
+                    friendNum++;
                 }
             }
 
@@ -73,6 +82,7 @@ public class Friendlist extends Activity {
 
 
         ADD.setOnClickListener(new Button.OnClickListener() {
+            @Override
             public void onClick(View v) {
 
                 myInformation.addValueEventListener((new ValueEventListener() {
@@ -97,6 +107,7 @@ public class Friendlist extends Activity {
         });
 
         MYINFORMATION.setOnClickListener(new Button.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Friendlist.this, UserInterface.class);
                 intent.putExtra("My Account", user.account);
@@ -105,6 +116,7 @@ public class Friendlist extends Activity {
         });
 
         INVITED.setOnClickListener(new Button.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Friendlist.this, BeAddedFriend.class);
                 intent.putExtra("My Account", user.account);

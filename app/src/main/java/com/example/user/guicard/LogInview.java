@@ -25,8 +25,6 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
     private Firebase Users;
     private Button next;
-    final EditText Account = (EditText)findViewById(R.id.Account);
-    final EditText PassWord = (EditText)findViewById(R.id.Password);
     private ProgressDialog imgProgress;
     private String sendLoginAccount;
     private String sendLoginPassword;
@@ -40,14 +38,14 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_resourse);
 
-        next = (Button)findViewById(R.id.nextB);
+        next = (Button)findViewById(R.id.ADD);
         nameLayout = (TextInputLayout)findViewById(R.id.Account1);
         account = (EditText)findViewById(R.id.Account);
         nameLayout1 = (TextInputLayout)findViewById(R.id.Password1);
         password = (EditText)findViewById(R.id.Password);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-        TextView OK = (TextView) findViewById(R.id.MYINFOR);
+        TextView OK = (TextView) findViewById(R.id.myInformationView);
 
 
         //修改字體

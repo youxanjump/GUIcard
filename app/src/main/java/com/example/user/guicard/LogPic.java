@@ -118,9 +118,11 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
                     searchFriend.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(!judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists())searchNum++;
+                            if(!judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists()&&
+                                    !judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).equals(Boolean.toString(false)))searchNum++;
                             searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(false));
                             searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("USER").setValue(user.account);
+                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum+1)).setValue(Boolean.toString(false));
                             judgeExsit = true;
 
                         }

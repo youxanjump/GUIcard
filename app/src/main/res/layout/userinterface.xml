@@ -22,7 +22,7 @@
         android:layout_marginTop="21dp" />
 
     <Button
-        android:id="@+id/MYINFOR"
+        android:id="@+id/myInformationView"
         android:background="@drawable/icon"
         android:layout_width="40dp"
         android:layout_height="40dp"

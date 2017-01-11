@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/MYINFOR"
+        android:id="@+id/myInformationView"
         android:text="Next"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -15,12 +15,12 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/nextB"
+        android:id="@+id/ADD"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/MYINFOR" />
+        android:layout_toStartOf="@+id/myInformationView" />
 
     <ImageView
         android:id="@+id/pic"

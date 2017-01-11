@@ -34,6 +34,7 @@ public class BeAddedFriend extends AppCompatActivity {
     private UserInfo addedMe;
     private String myAccount;
     private String addedMeAccount;
+    private boolean judge;
     private String[] interes = {"木吉他","演奏","貝斯","電吉他","演唱","鼓組","鍵盤","創作"};
 
     @Override
@@ -41,12 +42,13 @@ public class BeAddedFriend extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
-        List = (Button)findViewById(R.id.MYINFOR);
+        List = (Button)findViewById(R.id.myInformationView);
         accept = (Button)findViewById(R.id.FUNCTION);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);
         acceptText = (TextView)findViewById(R.id.FUNCTION_TEXT);
+        judge = false;
 
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
@@ -56,37 +58,34 @@ public class BeAddedFriend extends AppCompatActivity {
 
         myAccount = getIntent().getExtras().getString("My Account");
         userInformation =  new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
-        userInformation.addValueEventListener((new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                addedMeAccount = dataSnapshot.child(myAccount).child("BEADDED").getValue().toString();
-            }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        }));
 
         //Bundle the user's information
         userInformation.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, String> map = dataSnapshot.child(addedMeAccount).getValue(Map.class);
-                addedMe = new UserInfo(addedMeAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTEREST")));
-                //show your profile
-                Picasso.with(BeAddedFriend.this).load(addedMe.profileUri).into(myProfile);
-                myName.setText(addedMe.name);
+                if(!judge) {
+                    addedMeAccount = dataSnapshot.child(myAccount).child("BEADDED").getValue().toString();
+                    Map<String, String> map = dataSnapshot.child(addedMeAccount).getValue(Map.class);
+                    addedMe = new UserInfo(addedMeAccount, map.get("PASSWORD"), map.get("NAME"), Uri.parse(map.get("PROFILE")), Integer.parseInt(map.get("INTEREST")));
+                    //show your profile
+                    Picasso.with(BeAddedFriend.this).load(addedMe.profileUri).into(myProfile);
+                    myName.setText(addedMe.name);
 
-                while (addedMe.interes > 0) {
-                    int interesCount = 0;
-                    int interesOfMine = 1;
-                    if(addedMe.interes==1){addedMe.interes=0;interesCount++;}
-                    while (addedMe.interes > interesOfMine) {
-                        interesOfMine = 2 * interesOfMine;
-                        interesCount++;
+                    while (addedMe.interes > 0) {
+                        int interesCount = 0;
+                        int interesOfMine = 1;
+                        if (addedMe.interes == 1) {
+                            addedMe.interes = 0;
+                            interesCount++;
+                        }
+                        while (addedMe.interes > interesOfMine) {
+                            interesOfMine = 2 * interesOfMine;
+                            interesCount++;
+                        }
+                        addedMe.interes = addedMe.interes - interesOfMine / 2;
+                        myInteres.append(interes[interesCount - 1] + " ");
                     }
-                    addedMe.interes = addedMe.interes - interesOfMine/2;
-                    myInteres.append(interes[interesCount-1]+" ");
                 }
             }
             @Override
@@ -107,31 +106,37 @@ public class BeAddedFriend extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(!judge) {
 
-                userInformation.addValueEventListener((new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        int friendNum = 1;
-                        userInformation.child(myAccount).child("BEADDED").setValue(Boolean.toString(false));
-                        while (!(dataSnapshot.child(myAccount).child("FRIEND").child(Integer.toString(friendNum)).getValue()).equals(Boolean.toString(false)))friendNum++;
-                        userInformation.child(myAccount).child("FRIEND").child(Integer.toString(friendNum)).setValue(addedMeAccount);
-                        userInformation.child(myAccount).child("FRIEND").child(Integer.toString(friendNum+1)).setValue(Boolean.toString(false));
+                    userInformation.addValueEventListener((new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            int friendNum = 1;
+                            userInformation.child(myAccount).child("BEADDED").setValue(Boolean.toString(false));
+                            while (!(dataSnapshot.child(myAccount).child("FRIEND").child(Integer.toString(friendNum)).getValue()).equals(Boolean.toString(false)))
+                                friendNum++;
+                            userInformation.child(myAccount).child("FRIEND").child(Integer.toString(friendNum)).setValue(addedMeAccount);
+                            userInformation.child(myAccount).child("FRIEND").child(Integer.toString(friendNum + 1)).setValue(Boolean.toString(false));
 
-                        friendNum = 1;
-                        userInformation.child(addedMeAccount).child("ADDFRIEND").setValue(Boolean.toString(false));
-                        while (!(dataSnapshot.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum)).getValue().equals(Boolean.toString(false))))friendNum++;
-                        userInformation.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum)).setValue(myAccount);
-                        userInformation.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum+1)).setValue(Boolean.toString(false));
+                            friendNum = 1;
+                            userInformation.child(addedMeAccount).child("ADDFRIEND").setValue(Boolean.toString(false));
+                            while (!(dataSnapshot.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum)).getValue().equals(Boolean.toString(false))))
+                                friendNum++;
+                            userInformation.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum)).setValue(myAccount);
+                            userInformation.child(addedMeAccount).child("FRIEND").child(Integer.toString(friendNum + 1)).setValue(Boolean.toString(false));
 
-                        Intent intent = new Intent(BeAddedFriend.this,Friendlist.class);
-                        intent.putExtra("My Account",myAccount);
-                        startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }
+                            judge = true;
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                    }
-                }));
+                            Intent intent = new Intent(BeAddedFriend.this, Friendlist.class);
+                            intent.putExtra("My Account", myAccount);
+                            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                        }
+                    }));
+                }
 
             }
         });

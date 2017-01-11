@@ -35,7 +35,7 @@ public class UserInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userinterface);
 
-        List = (Button)findViewById(R.id.MYINFOR);
+        List = (Button)findViewById(R.id.myInformationView);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);

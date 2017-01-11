@@ -1,6 +1,7 @@
 package com.example.user.guicard;
 
 //登入畫面SignIn SignUp
+import android.app.Activity;
 import android.view.View;
 import android.os.Bundle;
 import android.graphics.Typeface;
@@ -10,7 +11,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 
-public class LogMain extends AppCompatActivity implements View.OnClickListener {
+public class LogMain extends Activity implements View.OnClickListener {
 
     private Button In;
     private Button Up;

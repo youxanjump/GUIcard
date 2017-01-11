@@ -11,7 +11,7 @@
     tools:context="com.example.user.guicard.LogInview">
 
     <TextView
-        android:id="@+id/MYINFOR"
+        android:id="@+id/myInformationView"
         android:text="OK"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -86,7 +86,7 @@
         app:errorEnabled="true"
         app:counterMaxLength="10"
         android:layout_alignTop="@+id/AccountG"
-        android:layout_alignEnd="@+id/nextB">
+        android:layout_alignEnd="@+id/ADD">
 
         <EditText
             android:layout_width="wrap_content"
@@ -103,12 +103,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/nextB"
+        android:id="@+id/ADD"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/MYINFOR" />
+        android:layout_toStartOf="@+id/myInformationView" />
 
 
 </RelativeLayout>

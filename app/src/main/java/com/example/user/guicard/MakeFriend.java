@@ -31,6 +31,7 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
     private Button B9;
     private Button next;
     private int wantInterest;
+    private boolean judge;
     private ProgressDialog imgProgress;
 
     private Firebase searchFriend;
@@ -53,13 +54,15 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
         B7 = (Button) findViewById(R.id.CB7);
         B8 = (Button) findViewById(R.id.CB8);
         B9 = (Button) findViewById(R.id.CB9);
-        next = (Button) findViewById(R.id.MYINFOR);
+        next = (Button) findViewById(R.id.myInformationView);
         TextView OK = (TextView) findViewById(R.id.OK);
         user = new UserInfo(getIntent().getExtras().getString("My Account"));
         wantInterest = 0;
         searchFriend = new Firebase("https://guicard-de0f4.firebaseio.com/").child("SearchFriend");
         myInformation = new Firebase("https://guicard-de0f4.firebaseio.com/").child("USER");
         imgProgress = new ProgressDialog(this);
+
+        judge = false;
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
         OK.setTypeface(font);
@@ -164,35 +167,47 @@ public class MakeFriend extends AppCompatActivity implements View.OnClickListene
             searchFriend.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    int searchNum = 1;
-                    Map<String, String> map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
 
-                    if(!(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())){
-                        imgProgress.dismiss();
-                        Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                    if(!judge) {
 
-                    while((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").getValue()).equals(Boolean.toString(true)))
-                    {
+                        int searchNum = 1;
+                        Map<String, String> map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
 
-                        if(!(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())){
+                        if (!(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())) {
                             imgProgress.dismiss();
                             Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        searchNum++;
-                        map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
 
-                    }
-                    if(dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists()){
-                        friend = new UserInfo(map.get("USER"));
-                        searchFriend.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(true));
-                        myInformation.child(user.account).child("ADDFRIEND").setValue(friend.account);
-                        imgProgress.dismiss();
-                        Intent intent = new Intent(MakeFriend.this,Myfriend.class);
-                        intent.putExtra("My Account", user.account);
-                        startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        if ((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists())) {
+                            while ((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists()) &&
+                                    ((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("USER").getValue()).equals(user.account) ||
+                                            (dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").getValue()).equals(Boolean.toString(true)))) {
+                                searchNum++;
+                                if ((dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue().equals(Boolean.toString(false)))) {
+                                    imgProgress.dismiss();
+                                    Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                map = dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).getValue(Map.class);
+
+                            }
+                        } else {
+                            imgProgress.dismiss();
+                            Toast.makeText(MakeFriend.this, "No one match your NEED,search again please.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (dataSnapshot.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).exists()) {
+                            judge = true;
+                            friend = new UserInfo(map.get("USER"));
+                            searchFriend.child(Integer.toString(wantInterest)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(true));
+                            myInformation.child(user.account).child("ADDFRIEND").setValue(friend.account);
+                            imgProgress.dismiss();
+                            Intent intent = new Intent(MakeFriend.this, Myfriend.class);
+                            intent.putExtra("My Account", user.account);
+                            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        }
                     }
                 }
 

@@ -45,7 +45,7 @@ public class Myfriend extends AppCompatActivity {
         setContentView(R.layout.userinterface);
 
         Invite = (Button)findViewById(R.id.FUNCTION);
-        List = (Button)findViewById(R.id.MYINFOR);
+        List = (Button)findViewById(R.id.myInformationView);
         myProfile = (ImageView)findViewById(R.id.image);
         myName = (TextView)findViewById(R.id.NAME);
         myInteres = (TextView)findViewById(R.id.INTERES);

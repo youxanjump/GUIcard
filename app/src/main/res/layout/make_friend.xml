@@ -163,7 +163,7 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/MYINFOR"
+        android:id="@+id/myInformationView"
         android:background="@drawable/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
