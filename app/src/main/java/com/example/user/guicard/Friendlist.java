@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 
 public class Friendlist extends Activity {
     private Button ADD;
-    private Button MYINFORMAT;
+    private Button MYINFORMATION;
     private Button INVITED;
     private Typeface font;
     private TextView title;

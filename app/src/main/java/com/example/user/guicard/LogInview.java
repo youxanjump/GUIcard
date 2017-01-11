@@ -25,8 +25,6 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
 
     private Firebase Users;
     private Button next;
-    private String sendLoginAccount;
-    private String sendLoginPassword;
     final EditText Account = (EditText)findViewById(R.id.Account);
     final EditText PassWord = (EditText)findViewById(R.id.Password);
     private ProgressDialog imgProgress;
