@@ -139,13 +139,14 @@
         android:layout_toEndOf="@+id/back1">
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword|textCapSentences"
-            android:hint="Password"
             android:textStyle="bold"
             android:textSize="30sp"
-            android:id="@+id/Password" />
+            android:hint="Password"
+            android:ems="10"
+            android:id="@+id/Password"/>
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -153,7 +154,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/guitar"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="22dp"
         android:layout_below="@+id/pic"
         android:layout_toStartOf="@+id/Account1" />
 

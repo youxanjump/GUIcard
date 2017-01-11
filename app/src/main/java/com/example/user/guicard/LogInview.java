@@ -17,21 +17,17 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-
 import java.util.Map;
+
+
 public class LogInview extends AppCompatActivity implements View.OnClickListener{
 
     private Firebase Users;
-    private EditText Account;
-    private EditText PassWord;
     private Button next;
-
     private String sendLoginAccount;
     private String sendLoginPassword;
-    final TextInputLayout nameLayout = (TextInputLayout)findViewById(R.id.Account1);
-    final EditText nameEditText = (EditText)findViewById(R.id.Account);
-    final TextInputLayout nameLayout1 = (TextInputLayout)findViewById(R.id.Password1);
-    final EditText nameEditText1 = (EditText)findViewById(R.id.Password);
+    final EditText Account = (EditText)findViewById(R.id.Account);
+    final EditText PassWord = (EditText)findViewById(R.id.Password);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +35,8 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.in_resourse);
 
         next = (Button)findViewById(R.id.nextB);
-        Account = (EditText)findViewById(R.id.Name);
-        PassWord = (EditText)findViewById(R.id.Account);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
-
         TextView OK = (TextView) findViewById(R.id.ok);
 
 
@@ -55,18 +48,7 @@ public class LogInview extends AppCompatActivity implements View.OnClickListener
     }
 
         @Override
-        public void onClick(View v) {
-
-            if(nameEditText.length() == 0){
-                nameLayout.setError("Account doesn't input ");
-            }
-            if(nameEditText1.length() == 0){
-                nameLayout1.setError("Password doesn't input ");
-            }
-            else{
-                nameLayout.setError(null);
-                nameLayout1.setError(null);
-            }
+        public void onClick(View v){
 
             sendLoginAccount = Account.getText().toString();
             sendLoginPassword = PassWord.getText().toString();

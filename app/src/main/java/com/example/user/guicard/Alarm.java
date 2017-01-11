@@ -25,8 +25,8 @@ public class Alarm extends AppCompatActivity {
         final int notifyID = 1;
         NotificationManager noMgr = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         Calendar mCal = Calendar.getInstance();
-        mCal.set(Calendar.HOUR_OF_DAY, 18);
-        mCal.set(Calendar.MINUTE,40);
+        mCal.set(Calendar.HOUR_OF_DAY,16);
+        mCal.set(Calendar.MINUTE,00);
         mCal.set(Calendar.SECOND, 0);
 
         //當使用者按下通知欄中的通知時要開啟的 Activity

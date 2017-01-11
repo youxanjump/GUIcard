@@ -44,28 +44,31 @@
                 android:id="@+id/CB1"
                 android:text="木吉他"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB2"
                 android:text="演奏"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB3"
                 android:text="貝斯"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro" />
         </TableRow>
 
         <TableRow
@@ -76,28 +79,31 @@
                 android:id="@+id/CB4"
                 android:text="電吉他"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB5"
                 android:text="演唱"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB6"
                 android:text="鼓組"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
         </TableRow>
 
         <TableRow
@@ -108,28 +114,31 @@
                 android:id="@+id/CB7"
                 android:text="鋼琴"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB8"
                 android:text="創作"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
 
             <CheckBox
                 android:id="@+id/CB9"
                 android:text="其他"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:background="@drawable/btn_pro"/>
+                android:background="@drawable/btn_pro"
+                android:button="@drawable/check_pro"/>
         </TableRow>
     </TableLayout>
 

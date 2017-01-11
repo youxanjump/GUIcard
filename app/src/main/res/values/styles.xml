@@ -18,6 +18,6 @@
 
     <style name="TextInputError" parent="TextAppearance.AppCompat.Small">
         <item name="android:textStyle">bold|italic</item>
-        <item name="android:textColor">#e50000</item>
+        <item name="android:textColor">#d41243</item>
     </style>
 </resources>

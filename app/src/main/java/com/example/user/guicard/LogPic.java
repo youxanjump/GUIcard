@@ -1,4 +1,4 @@
-﻿package com.example.user.guicard;
+package com.example.user.guicard;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
