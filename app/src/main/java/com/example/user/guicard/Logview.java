@@ -1,5 +1,6 @@
 package com.example.user.guicard;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,8 +46,15 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
         B9 = (Button) findViewById(R.id.CB9);
         Back = (Button) findViewById(R.id.back);
         Next = (Button) findViewById(R.id.nextB1);
-        user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
-                             getIntent().getExtras().getString("NAME"),0);
+
+        if(getIntent().getExtras().getString("PASSWORD")!=null) {
+            user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
+                    getIntent().getExtras().getString("NAME"), 0);
+        }else{
+            user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("NAME"),
+                    Uri.parse(getIntent().getExtras().getString("PROFILE")),0);
+            Back.setVisibility(View.GONE);
+        }
 
         //設定字體
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sushi.ttf");
@@ -156,12 +164,21 @@ public class Logview extends AppCompatActivity implements View.OnClickListener{
             intent.putExtra("NAME",user.name);
             startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }if(view==Next){
-            Intent intent = new Intent(Logview.this,LogPic.class);
-            intent.putExtra("ACCOUNT", user.account);
-            intent.putExtra("PASSWORD", user.password);
-            intent.putExtra("NAME", user.name);
-            intent.putExtra("INTEREST", user.interes);
-            startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            if(user.profileUri==null) {
+                Intent intent = new Intent(Logview.this, LogPic.class);
+                intent.putExtra("ACCOUNT", user.account);
+                intent.putExtra("PASSWORD", user.password);
+                intent.putExtra("NAME", user.name);
+                intent.putExtra("INTEREST", user.interes);
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }else{
+                Intent intent = new Intent(Logview.this, LogPic.class);
+                intent.putExtra("ACCOUNT", user.account);
+                intent.putExtra("NAME", user.name);
+                intent.putExtra("PROFILE", user.profileUri.toString());
+                intent.putExtra("INTEREST", user.interes);
+                startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
         }
 
     }

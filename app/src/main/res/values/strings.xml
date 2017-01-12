@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GUICard</string>
+    <string name="facebook_app_id">1366178756765465</string>
+    <string name="fb_login_protocol_scheme">fb1366178756765465</string>
 </resources>

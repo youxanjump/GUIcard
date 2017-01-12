@@ -18,6 +18,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.firebase.client.utilities.Base64;
 import com.google.android.gms.common.api.BooleanResult;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -27,7 +28,6 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.util.Map;
 
 
 public class LogPic extends AppCompatActivity implements View.OnClickListener{
@@ -71,17 +71,20 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
         Typeface font1 = Typeface.createFromAsset(getAssets(), "fonts/surf.ttf");
         Back.setTypeface(font1);
         Next.setTypeface(font1);
-
-        user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
-                getIntent().getExtras().getString("NAME"),null, getIntent().getExtras().getInt("INTEREST"));
-
+        if(getIntent().getExtras().getString("PASSWORD")!=null) {
+            user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("PASSWORD"),
+                    getIntent().getExtras().getString("NAME"), null, getIntent().getExtras().getInt("INTEREST"));
+        }else{
+            user = new UserInfo(getIntent().getExtras().getString("ACCOUNT"), getIntent().getExtras().getString("NAME"),
+                    Uri.parse(getIntent().getExtras().getString("PROFILE")),getIntent().getExtras().getInt("INTEREST"));
+            imageReg = user.profileUri;
+            Picasso.with(getApplicationContext()).load(imageReg).into(imagePreview);
+        }
         firebase = new Firebase("https://guicard-de0f4.firebaseio.com/");
         myInformation = firebase.child("USER");
         searchFriend =firebase.child("SearchFriend");
         imaStorage = FirebaseStorage.getInstance().getReference();
         imgProgress = new ProgressDialog(this);
-
-
 
         back.setOnClickListener(this);
         OK.setOnClickListener(this);
@@ -108,43 +111,20 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
             imgProgress.setMessage("Sign Up ...");
             imgProgress.show();
 
-            StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
-            imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    user.profileUri = taskSnapshot.getDownloadUrl();
-                    imgProgress.dismiss();
-                    searchNum = 1;
-                    searchFriend.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(!judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists()&&
-                                    !judgeExsit)while(dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).equals(Boolean.toString(false)))searchNum++;
-                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(false));
-                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("USER").setValue(user.account);
-                            searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum+1)).setValue(Boolean.toString(false));
-                            judgeExsit = true;
+            if(getIntent().getExtras().getString("PASSWORD")!=null) {
+                StorageReference imagePath = imaStorage.child("Profiles").child(imageReg.getLastPathSegment());
+                imagePath.putFile(imageReg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        user.profileUri = taskSnapshot.getDownloadUrl();
+                        imgProgress.dismiss();
+                        signUp();
 
-                        }
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                        }
-
-                    });
-                    myInformation.child(user.account).child("NAME").setValue(user.name);
-                    myInformation.child(user.account).child("PASSWORD").setValue(user.password);
-                    myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
-                    myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
-                    myInformation.child(user.account).child("FRIEND").child(Integer.toString(1)).setValue(Boolean.toString(false));
-                    myInformation.child(user.account).child("ADDFRIEND").setValue(Boolean.toString(false));
-                    myInformation.child(user.account).child("BEADDED").setValue(Boolean.toString(false));
-                    Toast.makeText(LogPic.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LogPic.this,LogupSuccess.class);
-                    intent.putExtra("My Account",user.account);
-                    startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                }
-            });
-
+                    }
+                });
+            }else{
+                signUp();
+            }
 
         }
         //從相簿中挑照片
@@ -171,7 +151,9 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
 
         if (resultCode == RESULT_OK) {
             if(requestCode == GALLERY_INTENT || requestCode == CAMERA_REQUEST_CODE) {
+
                 imageReg = data.getData();
+
                 CropImage.activity(imageReg)
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setAspectRatio(1,1)
@@ -185,5 +167,43 @@ public class LogPic extends AppCompatActivity implements View.OnClickListener{
             }
         }
     }
+
+    private void signUp(){
+        searchNum = 1;
+        searchFriend.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!judgeExsit)
+                    while (dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).exists() && !judgeExsit)
+                        while (!dataSnapshot.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).equals(Boolean.toString(false)))
+                            searchNum++;
+                searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("INVITED").setValue(Boolean.toString(false));
+                searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum)).child("USER").setValue(user.account);
+                searchFriend.child(Integer.toString(user.interes)).child(Integer.toString(searchNum + 1)).setValue(Boolean.toString(false));
+                judgeExsit = true;
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+
+        });
+
+        myInformation.child(user.account).child("NAME").setValue(user.name);
+        if (getIntent().getExtras().getString("PROFILE") != null)
+            myInformation.child(user.account).child("PASSWORD").setValue(user.password);
+        myInformation.child(user.account).child("INTEREST").setValue(Integer.toString(user.interes));
+        myInformation.child(user.account).child("PROFILE").setValue(user.profileUri.toString());
+        myInformation.child(user.account).child("FRIEND").child(Integer.toString(1)).setValue(Boolean.toString(false));
+        myInformation.child(user.account).child("ADDFRIEND").setValue(Boolean.toString(false));
+        myInformation.child(user.account).child("BEADDED").setValue(Boolean.toString(false));
+
+        Toast.makeText(LogPic.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LogPic.this, LogupSuccess.class);
+        intent.putExtra("My Account", user.account);
+        startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    }
+
 
 }

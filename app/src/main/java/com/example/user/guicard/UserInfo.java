@@ -27,6 +27,14 @@ public class UserInfo {
         this.name=name;
         this.interes=interes;
     }
+
+    public UserInfo(String account,String name,Uri profileUri,int interes){
+        this.account=account;
+        this.name=name;
+        this.profileUri=profileUri;
+        this.interes=interes;
+    }
+
     public UserInfo(String account){
         this.account=account;
     }
